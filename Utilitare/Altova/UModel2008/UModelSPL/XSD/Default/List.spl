@@ -1,0 +1,78 @@
+[
+'UML_element -> $DataType
+$XML_element = $NamespacePrefix & "list"
+
+write $Indent & "<" & $XML_element
+
+' XML attributes
+
+foreach $Stereotype in $DataType.appliedStereotype
+	switch( $Stereotype.name )
+		case "list":
+			foreach $TaggedValue in $Stereotype.taggedValue
+				$ValueName = $TaggedValue.name
+				$Value = $TaggedValue.value
+				
+				if( $Value <> "" )
+					write " " & $ValueName & "=" & "\"" & $Value & "\""
+				endif
+			next	
+	endswitch		
+next
+
+foreach $Property in $DataType.ownedAttribute
+	foreach $Stereotype_Property in $Property.appliedStereotype
+		switch( $Stereotype_Property.name )
+			case "itemType":
+				$Type = $Property.type
+				if( $Type.Valid )
+					$IsContentType = true				
+					foreach $Stereotype_Type in $Type.appliedStereotype
+						switch( $Stereotype_Type.name )
+							case "global": $IsContentType = false
+						endswitch		
+					next
+					
+					if( $IsContentType = false )
+						write " itemType=" & "\""
+						call Type( $Type )
+						write "\""
+					endif					
+				endif
+		endswitch		
+	next
+next
+
+' end of XML attributes
+write ">\n"
+
+' content
+$IndentSave = $Indent
+$Indent = $Indent & $IndentStep
+
+foreach $Property in $DataType.ownedAttribute
+	foreach $Stereotype_Property in $Property.appliedStereotype
+		switch( $Stereotype_Property.name )
+			case "itemType":
+				$Type = $Property.type
+				if( $Type.Valid )
+					$IsContentType = true				
+					foreach $Stereotype_Type in $Type.appliedStereotype
+						switch( $Stereotype_Type.name )
+							case "global": $IsContentType = false
+						endswitch		
+					next
+					
+					if( $IsContentType  )
+						call SimpleType( $Type )
+					endif					
+				endif
+		endswitch		
+	next
+next
+
+' end of content
+$Indent = $IndentSave
+
+write $Indent & "</" & $XML_element & ">\n"
+]

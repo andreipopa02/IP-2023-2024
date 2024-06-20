@@ -1,0 +1,89 @@
+[
+$PropertyName 	= $Property.name
+$PropertyName	= $PropertyName.RemoveLeft( "m_" )
+
+$TypeName  	= $Property.type.displayTypeName
+
+$OperationName 	= $PropertyName.MakeUpper( 1 )
+
+if $Options.generateSetter and not $Options.generateGetter
+	'documentation
+	if $Options.generateComments
+		$documentation = ""
+	endif
+	
+	'visibility
+	$visibility = "public"
+	
+	'abstract
+	$isAbstract = false
+	
+	'static
+	$isStatic = false
+	
+	'stereotypes
+	
+	'name
+	write "set" & $OperationName
+	
+	write "("
+	
+	'parameter
+	write "in"
+	write " "
+	write $PropertyName
+	if $TypeName <> ""
+		write ":"
+		write $TypeName
+	endif
+	write ")"
+	
+	'type
+	write ":"
+	write "void"
+endif
+
+if $Options.generateGetter and not $Options.generateSetter 
+	'documentation
+	if $Options.generateComments
+		$documentation = ""
+	endif
+
+	'visibility
+	$visibility = "public"
+	
+	'abstract
+	$isAbstract = false
+	
+	'static
+	$isStatic = false
+	
+	if $TypeName = "boolean" or $TypeName = "Boolean"
+		'stereotypes
+		
+		'name
+		write "is" & $OperationName
+		
+		write "("
+		write ")"
+		
+		'type
+		write ":"
+		write $TypeName
+	else
+		'stereotypes
+		
+		'name
+		write "get" & $OperationName
+		
+		write "("
+		write ")"
+		
+		'type
+		if $TypeName <> ""
+			write ":"
+			write $TypeName
+		endif
+	endif		
+endif
+]

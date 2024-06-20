@@ -1,0 +1,39 @@
+[
+'UML_element -> $ElementImport
+$XML_element = $NamespacePrefix & "include"
+
+$Class = $ElementImport.owner
+$Import = $ElementImport.importedElement
+
+write $Indent & "<" & $XML_element
+
+' XML attributes
+
+foreach $Stereotype in $ElementImport.appliedStereotype
+	switch( $Stereotype.name )
+		case "include":
+			foreach $TaggedValue in $Stereotype.taggedValue
+				$ValueName = $TaggedValue.name
+				$Value = $TaggedValue.value
+				
+				if( $Value <> "" )
+					write " " & $ValueName & "=" & "\"" & $Value & "\""
+				endif
+			next	
+	endswitch		
+next	
+
+' end of XML attributes
+write ">\n"
+
+' content
+$IndentSave = $Indent
+$Indent = $Indent & $IndentStep
+
+call Annotation( $ElementImport )
+
+' end of content
+$Indent = $IndentSave
+
+write $Indent & "</" & $XML_element & ">\n"
+]

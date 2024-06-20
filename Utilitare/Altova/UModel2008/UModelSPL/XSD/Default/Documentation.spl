@@ -1,0 +1,48 @@
+[
+'UML_element -> $Comment
+$XML_element = $NamespacePrefix & "documentation"
+
+write $Indent & "<" & $XML_element
+
+' XML attributes
+
+foreach $Stereotype in $Comment.appliedStereotype
+	switch( $Stereotype.name )
+		case "documentation":
+			foreach $TaggedValue in $Stereotype.taggedValue
+				$ValueName = $TaggedValue.name
+				$Value = $TaggedValue.value
+				
+				if( $Value <> "" )
+					write " " & $ValueName & "=" & "\"" & $Value & "\""
+				endif
+			next	
+	endswitch		
+next
+
+' end of XML attributes
+write ">"
+
+' content
+
+$CommentBody = $Comment.body
+if( $CommentBody <> "" )
+	$LineCount = 0
+	foreach $Line in $CommentBody.AsCommentLineList
+		$LineCount = $LineCount+1
+	next
+	if( $LineCount > 1 )
+		write "\n"
+		foreach $Line in $CommentBody.AsCommentLineList
+			write $Indent & $IndentStep & $Line.AsString & "\n"
+		next
+		write $Indent
+	else
+		write $CommentBody
+	endif
+endif
+
+' end of content
+
+write "</" & $XML_element & ">\n"
+]

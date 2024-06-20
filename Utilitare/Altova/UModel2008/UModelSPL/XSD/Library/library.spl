@@ -1,0 +1,276 @@
+[
+sub Schema( byref $Class )
+	include "Schema.spl"
+endsub
+
+sub Notation( byref $DataType )
+	include "Notation.spl"
+endsub
+
+sub ComplexType( byref $Class )
+	include "ComplexType.spl"
+endsub
+
+sub ComplexType_SimpleContent( byref $DataType )
+	include "ComplexType_SimpleContent.spl"
+endsub
+
+sub SimpleType( byref $DataType )
+	include "SimpleType.spl"
+endsub
+
+sub Element_Global( byref $Class, byref $Property )
+	include "Element_Global.spl"
+endsub
+
+sub ElementGlobal( byref $Class )
+	$IsDone = false
+	foreach $Property in $Class.ownedAttribute
+		if( $IsDone = false and $Class.name = $Property.name )
+			call Element_Global( $Class, $Property )
+			$IsDone = true
+		endif
+	next
+endsub
+
+sub Element( byref $Property )
+	$IsRef = false
+	foreach $Stereotype in $Property.appliedStereotype
+		switch( $Stereotype.name )
+			case "ref": $IsRef = true
+		endswitch		
+	next
+	
+	if( $IsRef )
+		$Type = $Property.type
+		if( $Type.Valid and $Type.kind = "Class" )
+			call Element_Ref( $Type, $Property )
+		endif
+	else
+		include "Element.spl"
+	endif	
+endsub
+
+sub Element_Ref( byref $Class, byref $Property )
+	include "Element_Ref.spl"
+endsub
+
+sub Attribute_Global( byref $Class, byRef $Property )
+	include "Attribute_Global.spl"
+endsub
+
+sub AttributeGlobal( byref $Class )
+	$IsDone = false
+	foreach $Property in $Class.ownedAttribute
+		if( $IsDone = false and $Class.name = $Property.name )
+			call Attribute_Global( $Class, $Property )
+			$IsDone = true
+		endif
+	next
+endsub
+
+sub Attribute( byref $Property )
+	$IsRef = false
+	foreach $Stereotype in $Property.appliedStereotype
+		switch( $Stereotype.name )
+			case "ref": $IsRef = true
+		endswitch		
+	next
+	
+	if( $IsRef )
+		$Type = $Property.type
+		if( $Type.Valid and $Type.kind = "Class" )
+			call Attribute_Ref( $Type, $Property )
+		endif
+	else
+		include "Attribute.spl"
+	endif	
+endsub
+
+sub Attribute_Ref( byref $Class, byref $Property )
+	include "Attribute_Ref.spl"
+endsub
+
+sub AttributeGroup_Global( byref $Class )
+	include "AttributeGroup_Global.spl"
+endsub
+
+sub AttributeGroup( byref $Property )
+	foreach $Stereotype in $Property.appliedStereotype
+		switch( $Stereotype.name )
+			case "ref":
+				$Type = $Property.type
+				if( $Type.Valid and $Type.kind = "Class" )
+					call AttributeGroup_Ref( $Type, $Property )
+				endif
+		endswitch		
+	next
+endsub
+
+sub AttributeGroup_Ref( byref $Class, byref $Property )
+	include "AttributeGroup_Ref.spl"
+endsub
+
+sub Group_Global( byref $Class )
+	include "Group_Global.spl"
+endsub
+
+sub Group( byref $Property )
+	foreach $Stereotype in $Property.appliedStereotype
+		switch( $Stereotype.name )
+			case "ref":
+				$Type = $Property.type
+				if( $Type.Valid and $Type.kind = "Class" )
+					call Group_Ref( $Type, $Property )
+				endif
+		endswitch		
+	next
+endsub
+
+sub Group_Ref( byref $Class, byref $Property )
+	include "Group_Ref.spl"
+endsub
+
+sub Annotation( byref $Element )
+	include "Annotation.spl"
+endsub
+
+sub Documentation( byref $Comment )
+	include "Documentation.spl"
+endsub
+
+sub Appinfo( byref $Comment )
+	include "Appinfo.spl"
+endsub
+
+sub Sequence( byref $Class, byRef $Property )
+	include "Sequence.spl"
+endsub
+
+sub Choice( byref $Class, byref $Property )
+	include "Choice.spl"
+endsub
+
+sub All( byRef $Class, byref $Property )
+	include "All.spl"
+endsub
+
+sub List( byref $DataType )
+	include "List.spl"
+endsub
+
+sub Union( byref $DataType )
+	include "Union.spl"
+endsub
+
+sub SimpleType_Base( byref $DataType )
+	$IsDone = false
+	foreach $Generalization in $DataType.generalization
+		if( $IsDone = false )
+			foreach $Stereotype in $Generalization.appliedStereotype
+				switch( $Stereotype.name )
+					case "restriction":
+						call SimpleType_Restriction( $Generalization )
+				endswitch		
+			next
+		endif
+	next
+endsub
+
+sub SimpleType_Restriction( byref $Generalization )
+	include "SimpleType_Restriction.spl"
+endsub
+
+sub SimpleContent_Restriction( byref $Generalization )
+	include "SimpleContent_Restriction.spl"
+endsub
+
+sub SimpleType_Extension( byref $Generalization )
+	include "SimpleType_Extension.spl"
+endsub
+
+sub SimpleContent_Base( byref $DataType )
+	$IsDone = false
+	foreach $Generalization in $DataType.generalization
+		if( $IsDone = false )
+			foreach $Stereotype in $Generalization.appliedStereotype
+				switch( $Stereotype.name )
+					case "restriction":	
+						foreach $Stereotype_General in $Generalization.general.appliedStereotype
+							switch( $Stereotype_General.name )
+								case "global":
+									call SimpleContent_Restriction( $Generalization )
+									$IsDone = true
+							endswitch						
+						next					
+					case "extension":		
+						call SimpleType_Extension( $Generalization )
+						$IsDone = true
+				endswitch		
+			next
+		endif
+	next
+endsub
+
+sub ComplexType_Base( byref $Class )
+	$IsDone = false
+	foreach $Generalization in $Class.generalization
+		if( $IsDone = false )
+			foreach $Stereotype in $Generalization.appliedStereotype
+				switch( $Stereotype.name )
+					case "restriction":	call ComplexType_Restriction( $Generalization )
+					case "extension":		call ComplexType_Extension( $Generalization )
+				endswitch		
+			next
+		endif
+	next
+endsub
+
+sub ComplexType_Restriction( byref $Generalization )
+	include "ComplexType_Restriction.spl"
+endsub
+
+sub ComplexType_Extension( byref $Generalization )
+	include "ComplexType_Extension.spl"
+endsub
+
+sub Any( byref $Property )
+	include "Any.spl"
+endsub
+
+sub AnyAttribute( byref $Property )
+	include "AnyAttribute.spl"
+endsub
+
+sub Type( $Type )
+	include "Type.spl"
+endsub
+
+sub Reference( $Element )
+	include "Reference.spl"
+endsub
+
+sub Schema_Ref( byref $Class )
+	foreach $ElementImport in $Class.elementImport
+		foreach $Stereotype in $ElementImport.appliedStereotype
+			switch( $Stereotype.name )
+				case "import":	call Schema_Import( $ElementImport )
+				case "include":	call Schema_Include( $ElementImport )
+				case "redefine":	call Schema_Redefine( $ElementImport )
+			endswitch		
+		next
+	next
+endsub
+
+sub Schema_Import( byref $ElementImport )
+	include "Import.spl"
+endsub
+
+sub Schema_Include( byref $ElementImport )
+	include "Include.spl"
+endsub
+
+sub Schema_Redefine( byref $ElementImport )
+	include "Redefine.spl"
+endsub
+]

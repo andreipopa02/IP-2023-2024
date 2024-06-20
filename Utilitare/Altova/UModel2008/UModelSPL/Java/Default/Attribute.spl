@@ -1,0 +1,59 @@
+[
+write  "\n"
+write $Indent
+
+'DocComment
+call DocComment( $Property )
+
+$OwnerKind = $Property.owner.kind
+$IsAnnotationTypeElement = false
+
+'Modifier
+if $Property.isPublic and $OwnerKind <> "Interface"	: write "public " 		: endif
+if $Property.isProtected 					: write "protected "	: endif
+if $Property.isPrivate						: write "private " 		: endif
+
+if $Property.isStatic 						: write "static " 		: endif
+
+foreach $Stereotype in $Property.appliedStereotype
+	switch ( $Stereotype.name )
+		case "final": 		write "final "
+		case "transient": 		write "transient "
+		case "volatile": 		write "volatile "
+		
+		case "annotations": 	call Annotations( $Stereotype )
+		
+		case "annotationTypeElement": $IsAnnotationTypeElement = true
+	endswitch
+next
+
+'Type
+call Type( $Property.type )
+
+'Dimension
+foreach $UpperValue in $Property.upperValue
+	write "[]"
+next
+
+write " "
+
+'Name
+write $Property.name
+
+if $IsAnnotationTypeElement
+	write "()"
+endif
+
+'Default value
+$DefaultValue = $Property.defaultValue.value
+if $DefaultValue <> ""
+	if $IsAnnotationTypeElement
+		write " default "
+	else
+		write " = "
+	endif
+	write $DefaultValue
+endif
+
+write ";"
+]

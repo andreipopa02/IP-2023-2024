@@ -1,0 +1,113 @@
+[
+'UML_element -> $Property
+$XML_element = $NamespacePrefix & "element"
+
+write $Indent & "<" & $XML_element
+
+' XML attributes
+$Name = $Property.name
+$IsFixedDefault = false
+
+write " name=" & "\"" & $Name & "\""
+
+foreach $Lower in $Property.lowerValue
+	$LowerValue = $Lower.value
+	if( $LowerValue <> "" )
+		write " minOccurs=" & "\"" & $LowerValue & "\""
+	endif
+next
+foreach $Upper in $Property.upperValue
+	$UpperValue = $Upper.value
+	if( $UpperValue <> "" )
+		if( $UpperValue = "*")
+			write " maxOccurs=" & "\"" & "unbounded" & "\""
+		else
+			write " maxOccurs=" & "\"" & $UpperValue & "\""
+		endif
+	endif
+next
+
+foreach $Stereotype in $Property.appliedStereotype
+	switch( $Stereotype.name )
+		case "element":
+			foreach $TaggedValue in $Stereotype.taggedValue
+				$ValueName = $TaggedValue.name
+				if( $ValueName = "fixed" )
+					$Value = $TaggedValue.value
+					if( $Value = "true" )
+						$IsFixedDefault = true
+					endif
+				else
+					$Prefix = " " & $ValueName & "=" & "\""
+					$Postfix = ""
+					foreach $SingleValue in $TaggedValue.values
+						$Value = $SingleValue.value
+						if( $Value <> "" )
+							write $Prefix & $Value
+							$Prefix = " "
+							$Postfix =  "\""
+						endif
+					next
+					write $Postfix
+				endif
+			next	
+	endswitch		
+next
+
+$Type = $Property.type
+$HasType = $Type.Valid
+$HasContentType = true
+$HasSimpleType = false
+$HasComplexTypeSimpleContent = false
+
+if( $HasType )
+	foreach $Type_Stereotype in $Type.appliedStereotype
+		switch ($Type_Stereotype.name)
+			case "global": 		$HasContentType = false
+			case "simpleType": 	$HasSimpleType = true
+			case "simpleContent": 	$HasComplexTypeSimpleContent = true
+		endswitch
+	next
+endif
+
+if( $HasType and $HasContentType = false )
+	write " type=" & "\""
+	call Type( $Type )
+	write "\""
+endif
+
+$Default = $Property.defaultValue.value
+if( $Default <> "" )
+	if( $IsFixedDefault )
+		write " fixed=" & "\"" & $Default & "\""		
+	else
+		write " default=" & "\"" & $Default & "\""		
+	endif
+endif
+
+' end of XML attributes
+write ">\n"
+
+' content
+$IndentSave = $Indent
+$Indent = $Indent & $IndentStep
+
+call Annotation( $Property )
+
+if( $HasType and $HasContentType )
+	if( $HasSimpleType )
+		call SimpleType( $Type )
+	else
+		if( $HasComplexTypeSimpleContent )
+			call ComplexType_SimpleContent( $Type )
+		else
+			call ComplexType( $Type )
+		endif
+	endif
+endif
+
+' end of content
+$Indent = $IndentSave
+
+write $Indent & "</" & $XML_element & ">\n"
+]

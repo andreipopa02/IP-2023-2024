@@ -1,0 +1,55 @@
+[
+if $Type.Valid
+	$TypeNamePrefix = ""
+	foreach $TypeNamePart in $Type.typeName
+		$TypeNamePartKind = $TypeNamePart.kind
+		if $TypeNamePartKind = "Package"
+			write $TypeNamePrefix & $TypeNamePart.name
+		else
+			$Bindings = $TypeNamePart.templateBinding
+			if $Bindings.Length
+				foreach $Binding in $Bindings
+					write $TypeNamePrefix & $Binding.signature.template.name
+		
+					$Prefix = "<"
+					$Postfix = ""
+					foreach $Substitution in $Binding.parameterSubstitution 
+						write $Prefix
+						$Kind = $Substitution.parameterSubstitution
+						if $Kind = "wildcard"
+							write "?"
+						else
+							if $Kind = "upperBound"
+								write "? extends "
+							else
+								if $Kind = "lowerBound"
+									write "? super "
+								endif
+							endif
+						 
+							call Type( $Substitution.actual )
+							$Dimension = $Substitution.parameterDimensionCount
+							if $Dimension > 0
+								$Count = 0
+								while $Count < $Dimension
+									write "[]"
+									$Count = $Count+1
+								wend
+							endif
+						endif
+		
+						$Prefix = ","
+						$Postfix = ">"
+					next
+		
+					write $Postfix
+				next
+			else
+				write $TypeNamePrefix & $TypeNamePart.name
+			endif
+		endif
+		
+		$TypeNamePrefix = "."
+	next		
+endif
+]

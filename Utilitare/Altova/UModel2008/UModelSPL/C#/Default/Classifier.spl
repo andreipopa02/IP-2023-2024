@@ -1,0 +1,25 @@
+[
+'Namespace
+$NamespaceDecl = ""
+
+if $Classifier.owner.kind = "Package"
+	$Prefix = ""
+	foreach $Namespace in $Classifier.namespace
+		$NamespaceDecl = $NamespaceDecl & $Prefix & $Namespace.parseableName
+		$Prefix = "."
+	next
+endif
+
+if $NamespaceDecl = ""
+	'Classifier
+	call Classifier( $Classifier )
+else
+	write "\nnamespace " & $NamespaceDecl
+	write "\n{"
+	$Indent = $Indent & $IndentStep
+	
+	'Classifier
+	call Classifier( $Classifier )
+	write "\n}"
+endif
+]

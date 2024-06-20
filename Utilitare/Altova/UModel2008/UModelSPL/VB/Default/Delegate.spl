@@ -1,0 +1,74 @@
+[
+write "\n"
+write $Indent
+
+'DocComment
+call DocComment( $Class )
+
+$OwnerKind = $Class.owner.kind
+$Modifiers = ""
+
+$AccessModifiers = ""
+
+foreach $Stereotype in $Class.appliedStereotype
+	switch( $Stereotype.name )
+		case "Friend":		$AccessModifiers = "Friend "
+		case "Shadows": 	$Modifiers = $Modifiers & "Shadows "
+		case "Attributes":	call AttributeSections( $Stereotype )
+	endswitch		
+next
+
+'Modifier
+if $Class.isPublic and $OwnerKind <> "Interface"
+$AccessModifiers = "Public "
+endif
+if $Class.isPackage
+$AccessModifiers = "Friend "
+endif
+if $Class.isProtected
+$AccessModifiers = "Protected " & $AccessModifiers
+endif
+if $Class.isPrivate
+$AccessModifiers = "Private "
+endif
+
+write $AccessModifiers
+
+write $Modifiers
+
+$HasTypeAndParameter = false
+$SubOrFunc = ""
+
+foreach $Operation in $Class.ownedOperation
+	if $HasTypeAndParameter = false
+		$HasTypeAndParameter = true
+		if $Operation.ownedReturnParameter.Valid
+			$SubOrFunc = "Function "
+		else
+			$SubOrFunc = "Sub "
+		endif
+	endif
+next	
+
+'Name
+write "Delegate " & $SubOrFunc & $Class.parseableName
+
+$HasTypeAndParameter = false
+
+foreach $Operation in $Class.ownedOperation
+	if $HasTypeAndParameter = false
+		$HasTypeAndParameter = true
+		
+		write "("			
+		'Parameter
+		call ParameterList( $Operation )			
+		write ")"
+
+		'Return Type
+		if $Operation.ownedReturnParameter.Valid
+			write " "
+			call ReturnParameter( $Operation.ownedReturnParameter )
+		endif
+	endif
+next	
+]

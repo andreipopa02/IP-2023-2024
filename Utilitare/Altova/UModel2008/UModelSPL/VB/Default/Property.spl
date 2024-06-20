@@ -1,0 +1,87 @@
+[
+write  "\n"
+write $Indent
+
+'DocComment
+call DocComment( $Operation )
+
+$Name = $Operation.parseableName
+$OwnerKind = $Operation.owner.kind
+$Modifiers = ""
+$AccessModifiers = ""
+$IsDefault = false
+
+
+$HasGetAccessor = false
+$HasSetAccessor = false
+
+foreach $Stereotype in $Operation.appliedStereotype
+	switch( $Stereotype.name )
+		case "Property"
+			foreach $TaggedValue in $Stereotype.taggedValue
+				if $TaggedValue.name = "Default" and $TaggedValue.value = "IsDefault" : $IsDefault = true : endif
+			next
+		case "GetAccessor": $HasGetAccessor = true
+		case "SetAccessor": $HasSetAccessor = true
+		case "Friend":	$AccessModifiers = "Friend "
+		case "Shadows": 	$Modifiers = $Modifiers & "Shadows "
+		case "Overridable": 	$Modifiers = $Modifiers & "Overridable "
+		case "Overrides": 	$Modifiers = $Modifiers & "Overrides "
+		case "Attributes": call AttributeSections( $Stereotype )
+	endswitch		
+next
+
+'Modifier
+if $Operation.isPackage and $OwnerKind <> "Interface"	: $AccessModifiers = "Friend "							: endif
+if $Operation.isPublic and $OwnerKind <> "Interface"	: $AccessModifiers = "Public " 							: endif
+if $Operation.isProtected and $OwnerKind <> "Interface"	: $AccessModifiers = "Protected " & $AccessModifiers	: endif
+if $Operation.isPrivate and $OwnerKind <> "Interface"	: $AccessModifiers = "Private " 						: endif
+
+if $Name.HasDot = false
+	write $AccessModifiers
+endif
+
+write $Modifiers
+
+if $Operation.isStatic 		: write "Shared " 			: endif
+if $Operation.isAbstract 	: write "MustOverride " 	: endif
+if $Operation.isLeaf		: write "NotOverridable " 	: endif
+
+'Name
+if $IsDefault								: write "Default "		: endif
+if $HasGetAccessor and not $HasSetAccessor	: write "ReadOnly "		: endif
+if $HasSetAccessor and not $HasGetAccessor	: write "WriteOnly "	: endif
+write "Property " & $Name
+
+'Index Parameter
+write "("
+call ParameterList( $Operation )
+write ")"
+
+'Return Type
+write " "			
+call ReturnParameter( $Operation.ownedReturnParameter )
+
+foreach $OperationImplementation in $Operation.ownedOperationImplementation
+	if $OperationImplementation.IsFirst : write " Implements " : endif
+	call Type( $OperationImplementation.implementedOperationOwner )
+	write "." & $OperationImplementation.implementedOperationParseableName
+	if not $OperationImplementation.IsLast : write ", " : endif
+next
+
+$HasBody = not ($Operation.isAbstract or $OwnerKind = "Interface")
+if $HasBody
+	'Accessor
+	foreach $Stereotype in $Operation.appliedStereotype
+		if $Stereotype.name = "GetAccessor" or $Stereotype.name = "SetAccessor"
+			$SaveIndent = $Indent
+			$Indent = $Indent & $IndentStep
+			call Accessor( $Stereotype )
+			$Indent = $SaveIndent
+		endif
+	next
+
+	write "\n"
+	write $Indent & "End Property"
+endif
+]

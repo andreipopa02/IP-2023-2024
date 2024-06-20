@@ -1,0 +1,117 @@
+[
+write "\n"
+write $Indent
+
+'DocComment
+call DocComment( $Operation )
+
+$OwnerKind = $Operation.owner.kind
+
+$IsOwnerModule = false
+foreach $Stereotype in $Operation.owner.appliedStereotype
+	switch( $Stereotype.name )
+		case "Module":			$IsOwnerModule = true
+	endswitch		
+next
+
+$Modifiers = ""
+$Partial = ""
+$AccessModifiers = ""
+$HandlesSequence = ""
+$IsConstructor = false
+
+foreach $Stereotype in $Operation.appliedStereotype
+	switch( $Stereotype.name )
+		case "Handles"
+			foreach $TaggedValue in $Stereotype.taggedValue
+				if $TaggedValue.name = "Event"
+					foreach $SingleValue in $TaggedValue.values
+						if $HandlesSequence = ""
+							$HandlesSequence = $SingleValue.value
+						else
+							$HandlesSequence = $HandlesSequence & ", " & $SingleValue.value
+						endif
+					next
+				endif
+			next
+		case "Constructor":		$IsConstructor = true
+		case "Friend":			$AccessModifiers = "Friend "
+		case "Overrides": 		$Modifiers = $Modifiers & "Overrides "
+		case "Overridable": 	$Modifiers = $Modifiers & "Overridable "
+		case "Shadows": 		$Modifiers = $Modifiers & "Shadows "
+		case "Overloads": 		$Modifiers = $Modifiers & "Overloads "
+		case "Partial": 		$Partial = "Partial "
+		case "Attributes":		call AttributeSections( $Stereotype )
+	endswitch		
+next
+
+$Name = ""
+if $IsConstructor
+	$Name = $Operation.name
+else
+	$Name = $Operation.parseableName
+endif
+
+$WriteAccessModifier = true
+if $IsConstructor and ( $Operation.isStatic or $IsOwnerModule )
+	$WriteAccessModifier = false
+endif
+
+'Modifier
+if $Operation.isPackage and $OwnerKind <> "Interface"	: $AccessModifiers = "Friend "							: endif
+if $Operation.isPublic and $OwnerKind <> "Interface"	: $AccessModifiers = "Public "							: endif
+if $Operation.isProtected and $OwnerKind <> "Interface"	: $AccessModifiers = "Protected " & $AccessModifiers	: endif
+if $Operation.isPrivate and $OwnerKind <> "Interface"	: $AccessModifiers = "Private " 						: endif
+
+if $WriteAccessModifier
+	write $AccessModifiers
+endif
+
+write $Modifiers
+
+if $Operation.isStatic		: write "Shared "				: endif
+if $Operation.isAbstract 	: write "MustOverride "			: endif
+if $Operation.isLeaf		: write "NotOverridable " 		: endif
+
+write $Partial
+
+$SubOrFunc = ""
+if $Operation.ownedReturnParameter.Valid
+	$SubOrFunc = "Function"
+else
+	$SubOrFunc = "Sub"
+endif
+
+'Name
+write $SubOrFunc & " " & $Name
+
+'Template signature
+if $Operation.isTemplate
+	call TemplateSignature( $Operation.ownedTemplateSignature )
+endif
+
+'Parameter
+write "("
+call ParameterList( $Operation )
+write ")"
+
+'Return Type
+if $IsConstructor = false and $Operation.ownedReturnParameter.Valid
+	write " "			
+	call ReturnParameter( $Operation.ownedReturnParameter )
+endif
+
+foreach $OperationImplementation in $Operation.ownedOperationImplementation
+	if $OperationImplementation.IsFirst : write " Implements " : endif
+	call Type( $OperationImplementation.implementedOperationOwner )
+	write "." & $OperationImplementation.implementedOperationParseableName
+	if not $OperationImplementation.IsLast : write ", " : endif
+next
+
+if $HandlesSequence <> ""		: write " Handles " 	& $HandlesSequence		: endif
+
+$HasBody = not ($Operation.isAbstract or $OwnerKind = "Interface")
+if $HasBody 
+	write "\n" & $Indent & "End " & $SubOrFunc
+endif
+]

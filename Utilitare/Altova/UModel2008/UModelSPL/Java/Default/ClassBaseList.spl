@@ -1,0 +1,9 @@
+[
+'Extends
+$Prefix = " extends"
+foreach $Generalization in $Class.generalization
+	write $Prefix & " " 
+	call Type( $Generalization.general )
+	$Prefix = ","
+next
+]

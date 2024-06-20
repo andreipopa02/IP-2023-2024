@@ -1,0 +1,73 @@
+[
+write "\n"
+write $Indent
+
+'DocComment
+call DocComment( $Enumeration )
+
+$OwnerKind = $Enumeration.owner.kind
+
+$Modifiers = ""
+$BaseType = ""
+
+$AccessModifiers = ""
+
+foreach $Stereotype in $Enumeration.appliedStereotype
+	switch( $Stereotype.name )
+		case "Friend":		$AccessModifiers = "Friend "
+		case "Shadows": 	$Modifiers = $Modifiers & "Shadows "
+		case "BaseType":	
+			foreach $TaggedValue in $Stereotype.taggedValue
+				if $TaggedValue.name = "type"
+					$BaseType = $TaggedValue.value
+				endif
+			next
+		case "Attributes": call AttributeSections( $Stereotype )
+	endswitch		
+next
+
+'Modifier
+if $Enumeration.isPublic and $OwnerKind <> "Interface"
+$AccessModifiers = "Public "
+endif
+if $Enumeration.isPackage
+$AccessModifiers = "Friend "
+endif
+if $Enumeration.isProtected
+$AccessModifiers = "Protected " & $AccessModifiers
+endif
+if $Enumeration.isPrivate
+$AccessModifiers = "Private "
+endif
+
+write $AccessModifiers
+
+write $Modifiers
+
+if $Enumeration.isAbstract	: write "MustInherit " 		: endif
+if $Enumeration.isLeaf		: write "NotInheritable " 	: endif
+
+write "Enum "
+
+'Name
+write $Enumeration.parseableName
+
+'Template signature
+if $Enumeration.isTemplate
+	call TemplateSignature( $Enumeration.ownedTemplateSignature )
+endif
+
+'Base
+if $BaseType <> "" : write " As " & $BaseType : endif
+
+$IndentSave = $Indent
+$Indent = $Indent & $IndentStep
+
+'Enumeration literals
+call EnumerationLiteralList( $Enumeration )
+
+$Indent = $IndentSave
+
+write "\n"
+write $Indent & "End Enum"
+]

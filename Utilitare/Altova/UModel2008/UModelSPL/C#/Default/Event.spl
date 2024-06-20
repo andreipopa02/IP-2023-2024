@@ -1,0 +1,91 @@
+[
+write  "\n"
+write $Indent
+
+'DocComment
+call DocComment( $Operation )
+
+$Name = $Operation.parseableName
+$OwnerKind = $Operation.owner.kind
+$Modifiers = ""
+$AccessModifiers = ""
+
+foreach $Stereotype in $Operation.appliedStereotype
+	switch( $Stereotype.name )
+		case "internal":	$AccessModifiers = "internal "
+		case "unsafe": 	$Modifiers = $Modifiers & "unsafe "
+		case "new": 	$Modifiers = $Modifiers & "new "
+		case "virtual": 	$Modifiers = $Modifiers & "virtual "
+		case "override": 	$Modifiers = $Modifiers & "override "
+		case "extern": 	$Modifiers = $Modifiers & "extern "
+		
+		case "attributes": call AttributeSections( $Stereotype )
+	endswitch		
+next
+
+'Modifier
+if $Operation.isPackage						: $AccessModifiers = "internal "				: endif
+if $Operation.isPublic and $OwnerKind <> "Interface"	: $AccessModifiers = "public " 				: endif
+if $Operation.isProtected					: $AccessModifiers = "protected " & $AccessModifiers	: endif
+if $Operation.isPrivate						: $AccessModifiers = "private " 				: endif
+
+if not $Operation.implementedInterface.Valid
+	write $AccessModifiers
+endif
+
+write $Modifiers
+
+if $Operation.isStatic 		: write "static " 		: endif
+if $Operation.isAbstract 	: write "abstract " 	: endif
+if $Operation.isLeaf		: write "sealed " 		: endif
+
+'Template signature
+if $Operation.isTemplate
+	call TemplateSignature( $Operation.ownedTemplateSignature )
+	write " "
+endif
+
+write "event "
+
+'Return Type
+call ReturnParameter( $Operation.ownedReturnParameter )
+write " "			
+
+'Implemented Interface
+if $Operation.implementedInterface.Valid
+	call Type( $Operation.implementedInterface )
+	write "."			
+endif
+
+'Name
+write $Name
+
+'Default value
+$DefaultValue = $Operation.ownedReturnParameter.defaultValue.value
+if $DefaultValue <> "" : write " = " & $DefaultValue : endif
+
+$IsAddRemoveAccessorSet = false
+
+if $OwnerKind <> "Interface"
+	'Accessor
+	foreach $Stereotype in $Operation.appliedStereotype
+		if $Stereotype.name = "AddRemoveAccessor"
+			write "\n"
+			write $Indent & "{"
+			$SaveIndent = $Indent
+			$Indent = $Indent & $IndentStep
+	
+			call Accessor( $Stereotype )
+	
+			$Indent = $SaveIndent
+			write "\n"
+			write $Indent & "}"
+			$IsAddRemoveAccessorSet=true
+		endif
+	next
+endif	
+
+if $IsAddRemoveAccessorSet = false
+	write ";"
+endif
+]

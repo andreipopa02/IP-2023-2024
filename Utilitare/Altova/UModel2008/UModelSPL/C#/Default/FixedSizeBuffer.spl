@@ -1,0 +1,50 @@
+[
+write  "\n"
+write $Indent
+
+'DocComment
+call DocComment( $Property )
+
+$IsNullable = false
+$Modifiers = ""
+
+foreach $Stereotype in $Property.appliedStereotype
+	switch( $Stereotype.name )
+		case "internal":
+			if $Property.isProtected
+				$Modifiers = "internal " & $Modifiers
+			endif
+		case "unsafe": 	$Modifiers = $Modifiers & "unsafe "
+		case "new": 	$Modifiers = $Modifiers & "new "
+
+		case "nullable": 	$IsNullable = true
+		case "attributes": call AttributeSections( $Stereotype )
+	endswitch		
+next
+
+'Modifier
+if $Property.isPackage		: write "internal "		: endif
+if $Property.isPublic		: write "public " 		: endif
+if $Property.isProtected 	: write "protected "	: endif
+if $Property.isPrivate		: write "private " 		: endif
+
+write $Modifiers
+
+write "fixed " 
+
+'Type
+call Type( $Property.type )
+
+if $IsNullable			: write "?"			: endif
+
+write " "
+
+'Name
+write $Property.parseableName
+
+'Buffer size
+$BufferSize = $Property.defaultValue.value
+write "[" & $BufferSize & "]"
+
+write ";"
+]

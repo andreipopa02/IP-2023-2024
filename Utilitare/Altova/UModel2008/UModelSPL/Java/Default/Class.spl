@@ -1,0 +1,102 @@
+[
+write "\n"
+write $Indent
+
+'DocComment
+call DocComment( $Class )
+
+$IsAnnotationType = false
+
+'Modifier
+if $Class.isPublic		: write "public " 		: endif
+if $Class.isProtected 	: write "protected "	: endif
+if $Class.isPrivate		: write "private " 		: endif
+
+if $Class.isAbstract	: write "abstract " 	: endif
+
+foreach $Stereotype in $Class.appliedStereotype
+	switch ($Stereotype.name)
+		case "static": 		write "static "
+		case "final": 		write "final "
+		case "strictfp" : 		write "strictfp "
+		
+		case "annotations": 	call Annotations( $Stereotype )
+	
+		case "annotationType":	$IsAnnotationType = true
+	endswitch
+next
+
+'Kind
+$Kind = $Class.kind
+if $Kind = "Class" or $Kind = "AssociationClass"	: write "class " 		: endif
+if $Kind = "Enumeration"				: write "enum " 		: endif
+if $Kind = "Interface"
+	if $IsAnnotationType = true
+		write "@"
+	endif
+	write "interface "
+endif
+
+'Name
+write $Class.name
+
+'Template signature
+if $Class.isTemplate
+	call TemplateSignature( $Class.ownedTemplateSignature )
+endif
+
+'Extends
+call ClassBaseList( $Class )
+
+'Implements
+call ClassInterfaceList( $Class )
+
+write "{"
+
+$IndentSave = $Indent
+$Indent = $Indent & $IndentStep
+
+$EnumerationLiteralSeparator = ""
+
+'Enumeration literals
+if $Kind = "Enumeration"
+	call EnumerationLiteralList( $Class )
+	$EnumerationLiteralSeparator = ";"
+endif
+
+'Nested classes
+if $Kind = "Class" or $Kind = "AssociationClass" or $Kind = "Interface" or $Kind = "Enumeration"
+	foreach $InnerClass in $Class.nestedClassifier
+		if $InnerClass.kind = "Class" or $InnerClass.kind = "Interface" or $InnerClass.kind = "Enumeration"
+			if $EnumerationLiteralSeparator <> ""
+				write "\n" & $Indent & $EnumerationLiteralSeparator
+				$EnumerationLiteralSeparator = ""
+			endif
+			call Classifier( $InnerClass )
+		endif
+	next
+endif
+
+'Attributs
+foreach $Property in $Class.ownedAttribute
+	if $EnumerationLiteralSeparator <> ""
+		write "\n" & $Indent & $EnumerationLiteralSeparator
+		$EnumerationLiteralSeparator = ""
+	endif
+	call Attribute( $Property )
+next
+
+'Operations
+foreach $Operation in $Class.ownedOperation
+	if $EnumerationLiteralSeparator <> ""
+		write "\n" & $Indent & $EnumerationLiteralSeparator
+		$EnumerationLiteralSeparator = ""
+	endif
+	call Operation( $Operation )
+next
+
+$Indent = $IndentSave
+
+write "\n"
+write $Indent & "}"
+]

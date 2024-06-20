@@ -1,0 +1,69 @@
+[
+sub ClassifierFile( byref $Class )
+	include "ClassFile.spl"
+endsub
+
+sub Classifier( byref $Class )
+	include "Class.spl"
+endsub
+
+sub ClassBaseList( byref $Class )
+	include "ClassBaseList.spl"
+endsub
+
+sub ClassInterfaceList( byref $Class )
+	include "ClassinterfaceList.spl"
+endsub
+
+sub EnumerationLiteralList( byref $Class )
+	include "EnumerationLiteralList.spl"
+endsub
+
+sub EnumerationLiteral( byref $EnumerationLiteral )
+	include "EnumerationLiteral.spl"
+endsub
+
+sub Attribute( byref $Property )
+	include "Attribute.spl"
+endsub
+
+sub Operation( byref $Operation )
+	include "Operation.spl"
+endsub
+
+sub ParameterList( byref $Operation )
+	include "ParameterList.spl"
+endsub
+
+sub OperationExceptionList( byref $Operation )
+	include "OperationExceptionList.spl"
+endsub
+
+sub Parameter( byref $Parameter )
+	include "Parameter.spl"
+endsub
+
+sub Type( byref $Type )
+	include "Type.spl"
+endsub
+
+sub DocComment( byref $Element )
+	include "DocComment.spl"
+endsub
+
+sub TemplateSignature( byref $TemplateSignature )
+	include "TemplateSignature.spl"
+endsub
+
+sub TemplateParameter( byref $TemplateParameter )
+	include "TemplateParameter.spl"
+endsub
+
+sub TemplateParameterBounds( byref $TemplateParameter )
+	include "TemplateParameterBounds.spl"
+endsub
+
+sub Annotations( byref $Stereotype )
+	include "Annotations.spl"
+endsub
+]

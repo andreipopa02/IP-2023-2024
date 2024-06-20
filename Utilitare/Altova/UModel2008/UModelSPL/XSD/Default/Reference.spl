@@ -1,0 +1,11 @@
+[
+'UML_element -> $Element
+
+if( $Element.Valid )
+	$NsPrefix = $Element.namespacePrefix
+	if( $NsPrefix <> "" )
+		$NsPrefix = $NsPrefix & ":"
+	endif
+	write $NsPrefix & $Element.name
+endif
+]

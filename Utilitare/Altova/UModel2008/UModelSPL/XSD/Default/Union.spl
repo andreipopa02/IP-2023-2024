@@ -1,0 +1,88 @@
+[
+'UML_element -> $DataType
+$XML_element = $NamespacePrefix & "union"
+
+write $Indent & "<" & $XML_element
+
+' XML attributes
+
+foreach $Stereotype in $DataType.appliedStereotype
+	switch( $Stereotype.name )
+		case "union":
+			foreach $TaggedValue in $Stereotype.taggedValue
+				$ValueName = $TaggedValue.name
+				$Value = $TaggedValue.value
+				
+				if( $Value <> "" )
+					write " " & $ValueName & "=" & "\"" & $Value & "\""
+				endif
+			next	
+	endswitch		
+next
+
+$MemberTypesPrefix = " memberTypes=" & "\""
+$MemberTypesPostfix = ""
+
+foreach $Property in $DataType.ownedAttribute
+	foreach $Stereotype_Property in $Property.appliedStereotype
+		switch( $Stereotype_Property.name )
+			case "memberType":
+				$Type = $Property.type
+				if( $Type.Valid )
+					$IsContentType = true				
+					foreach $Stereotype_Type in $Type.appliedStereotype
+						switch( $Stereotype_Type.name )
+							case "global": $IsContentType = false
+						endswitch		
+					next
+					
+					if( $IsContentType = false )
+						write $MemberTypesPrefix
+						call Type( $Type )
+						$MemberTypesPrefix = " "	
+						$MemberTypesPostfix = "\""						
+					endif					
+				endif
+		endswitch		
+	next
+next
+
+if( $MemberTypesPostfix <> "" )
+	write $MemberTypesPostfix
+endif
+
+' end of XML attributes
+write ">\n"
+
+' content
+$IndentSave = $Indent
+$Indent = $Indent & $IndentStep
+
+foreach $Property in $DataType.ownedAttribute
+	foreach $Stereotype_Property in $Property.appliedStereotype
+		switch( $Stereotype_Property.name )
+			case "memberType":
+				$Type = $Property.type
+				if( $Type.Valid )
+					$IsContentType = true
+					$IsSimpleType = false
+					foreach $Stereotype_Type in $Type.appliedStereotype
+						switch( $Stereotype_Type.name )
+							case "global": $IsContentType = false
+							case "simpleType": $IsSimpleType = true
+						endswitch		
+					next
+					
+					if( $IsContentType and $IsSimpleType )
+						call SimpleType( $Type )
+					endif					
+				endif
+		endswitch		
+	next
+next
+
+' end of content
+$Indent = $IndentSave
+
+write $Indent & "</" & $XML_element & ">\n"
+]

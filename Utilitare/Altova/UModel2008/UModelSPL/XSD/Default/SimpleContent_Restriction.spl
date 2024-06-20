@@ -1,0 +1,113 @@
+[
+'UML_element -> $Generalization
+$XML_element = $NamespacePrefix & "restriction"
+
+$DataType = $Generalization.owner
+$General = $Generalization.general
+
+write $Indent & "<" & $XML_element
+
+' XML attributes
+
+foreach $Stereotype in $Generalization.appliedStereotype
+	switch( $Stereotype.name )
+		case "restriction":
+			foreach $TaggedValue in $Stereotype.taggedValue
+				$ValueName = $TaggedValue.name
+				$Value = $TaggedValue.value
+				
+				if( $Value <> "" )
+					write " " & $ValueName & "=" & "\"" & $Value & "\""
+				endif
+			next	
+	endswitch		
+next
+
+write " base=" & "\""
+call Type( $General )
+write "\""
+
+' end of XML attributes
+write ">\n"
+
+' content
+$IndentSave = $Indent
+$Indent = $Indent & $IndentStep
+
+call Annotation( $Generalization )
+
+foreach $DataType_Generalization in $DataType.generalization
+	$IsLocal = true
+	foreach $Stereotype_General in $DataType_Generalization.general.appliedStereotype
+		switch( $Stereotype_General.name )
+			case "global":	$IsLocal = false
+		endswitch
+	next
+	if( $IsLocal )
+		call SimpleType( $DataType_Generalization.general )
+	endif
+next
+
+foreach $Stereotype_DataType in $DataType.appliedStereotype
+	$StereotypeName = $Stereotype_DataType.name
+	switch( $StereotypeName )
+		case "pattern":
+			foreach $TaggedValue in $Stereotype_DataType.taggedValue
+				$ValueName = $TaggedValue.name
+				if( $ValueName = "value" )
+					foreach $SingleValue in $TaggedValue.values
+						$Value = $SingleValue.value
+						if( $Value <> "" )
+							write $Indent & "<" & $NamespacePrefix & $StereotypeName
+							write " " & $ValueName & "=" & "\"" & $Value & "\""
+							write "/>\n"
+						endif
+					next
+				endif	
+			next	
+		case "minExclusive":
+		case "minInclusive":
+		case "maxExclusive":
+		case "maxInclusive":
+		case "totalDigits":
+		case "fractionDigits":
+		case "length":
+		case "minLength":
+		case "maxLength":
+		case "whiteSpace":		
+			write $Indent & "<" & $NamespacePrefix & $StereotypeName
+
+			foreach $TaggedValue in $Stereotype_DataType.taggedValue
+				$ValueName = $TaggedValue.name
+				$Value = $TaggedValue.value
+				
+				if( $Value <> "" )
+					write " " & $ValueName & "=" & "\"" & $Value & "\""
+				endif
+			next	
+			
+			write "/>\n"
+	endswitch		
+next
+
+if( $DataType.kind = "Enumeration" )
+	foreach $EnumerationLiteral in $DataType.ownedLiteral
+		write $Indent & "<" & $NamespacePrefix & "enumeration value=" & "\"" & $EnumerationLiteral.name & "\"/>\n"
+	next
+endif
+
+foreach $Property in $DataType.ownedAttribute
+	foreach $Stereotype_Property in $Property.appliedStereotype
+		switch( $Stereotype_Property.name )
+			case "attribute": 		call Attribute( $Property )
+			case "anyAttribute":	call AnyAttribute( $Property )
+			case "attributeGroup":	call AttributeGroup( $Property )
+		endswitch
+	next
+next
+
+' end of content
+$Indent = $IndentSave
+
+write $Indent & "</" & $XML_element & ">\n"
+]

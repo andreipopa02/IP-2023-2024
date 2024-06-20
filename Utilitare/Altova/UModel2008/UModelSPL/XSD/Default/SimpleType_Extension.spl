@@ -1,0 +1,63 @@
+[
+'UML_element -> $Generalization
+$XML_element = $NamespacePrefix & "extension"
+
+$DataType = $Generalization.owner
+$General = $Generalization.general
+
+write $Indent & "<" & $XML_element
+
+' XML attributes
+
+foreach $Stereotype in $Generalization.appliedStereotype
+	switch( $Stereotype.name )
+		case "extension":
+			foreach $TaggedValue in $Stereotype.taggedValue
+				$ValueName = $TaggedValue.name
+				$Value = $TaggedValue.value
+				
+				if( $Value <> "" )
+					write " " & $ValueName & "=" & "\"" & $Value & "\""
+				endif
+			next	
+	endswitch		
+next
+
+$HasContentType = true
+
+foreach $General_Stereotype in $General.appliedStereotype
+	switch ($General_Stereotype.name)
+		case "global": $HasContentType = false
+	endswitch
+next
+
+if( $HasContentType = false )
+	write " base=" & "\""
+	call Type( $General )
+	write "\""
+endif
+
+' end of XML attributes
+write ">\n"
+
+' content
+$IndentSave = $Indent
+$Indent = $Indent & $IndentStep
+
+call Annotation( $Generalization )
+
+foreach $Property in $DataType.ownedAttribute
+	foreach $Stereotype_Property in $Property.appliedStereotype
+		switch( $Stereotype_Property.name )
+			case "attribute": 		call Attribute( $Property )
+			case "anyAttribute":	call AnyAttribute( $Property )
+			case "attributeGroup":	call AttributeGroup( $Property )
+		endswitch
+	next
+next
+
+' end of content
+$Indent = $IndentSave
+
+write $Indent & "</" & $XML_element & ">\n"
+]

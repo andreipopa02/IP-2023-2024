@@ -1,0 +1,14 @@
+[
+'DocComment
+if $Options.generateComments
+	foreach $Comment in $Element.ownedComment
+		$Lines = $Comment.body
+		if $Lines <> ""
+			$Prefix = "/// "
+			foreach $Line in $Lines.AsCommentLineList
+				write $Prefix & $Line.AsString & "\n" & $Indent
+			next
+		endif
+	next
+endif
+]

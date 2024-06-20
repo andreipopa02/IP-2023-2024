@@ -1,0 +1,45 @@
+[
+$ParameteredElement = $TemplateParameter.ownedParameteredElement
+if $ParameteredElement.Valid
+	$IsConstructorConstraint = false
+	$IsValueTypeConstraint = false
+	$IsReferenceTypeConstraint = false
+	$NumConstraints = 0
+
+	foreach $Stereotype in $TemplateParameter.appliedStereotype
+		switch( $Stereotype.name )
+			case "ConstructorConstraint":	$IsConstructorConstraint = true		: $NumConstraints = $NumConstraints + 1
+			case "ValueTypeConstraint": 	$IsValueTypeConstraint = true		: $NumConstraints = $NumConstraints + 1
+			case "ReferenceTypeConstraint": $IsReferenceTypeConstraint = true	: $NumConstraints = $NumConstraints + 1
+		endswitch		
+	next
+
+	foreach $Constraint in $TemplateParameter.constrainingClassifier
+		$NumConstraints = $NumConstraints + 1
+	next
+
+	$Prefix = " As "
+	if $NumConstraints > 1	: $Prefix = $Prefix & "{"	: endif
+
+	if $IsValueTypeConstraint
+		write $Prefix & "Structure"
+		$Prefix = ", "
+	endif
+	
+	if $IsReferenceTypeConstraint
+		write $Prefix & "Class"
+		$Prefix = ", "
+	endif
+
+	foreach $Constraint in $TemplateParameter.constrainingClassifier
+		write $Prefix
+		call Type( $Constraint )
+		$Prefix = ", "
+	next
+	
+	if $IsConstructorConstraint
+		write $Prefix & "New"
+	endif
+	if $NumConstraints > 1	: write "}"	: endif
+endif	
+]

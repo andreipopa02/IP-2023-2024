@@ -1,0 +1,94 @@
+[
+write "\n"
+write $Indent
+
+'DocComment
+call DocComment( $Class )
+
+$OwnerKind = $Class.owner.kind
+
+$Modifiers = ""
+$Partial = ""
+
+$IsModule = false
+$AccessModifiers = ""
+
+foreach $Stereotype in $Class.appliedStereotype
+	switch( $Stereotype.name )
+		case "Friend":		$AccessModifiers = "Friend "
+		case "Shadows":		$Modifiers = $Modifiers & "Shadows "
+		case "Partial": 	$Partial = "Partial "
+		case "Module":		$IsModule = true
+		case "Attributes":	call AttributeSections( $Stereotype )
+	endswitch		
+next
+
+'Modifier
+if $Class.isPublic and $OwnerKind <> "Interface"
+$AccessModifiers = "Public "
+endif
+if $Class.isPackage
+$AccessModifiers = "Friend "
+endif
+if $Class.isProtected
+$AccessModifiers = "Protected " & $AccessModifiers
+endif
+if $Class.isPrivate
+$AccessModifiers = "Private "
+endif
+
+write $AccessModifiers
+
+write $Modifiers
+
+if $Class.isAbstract	: write "MustInherit " 		: endif
+if $Class.isLeaf		: write "NotInheritable " 	: endif
+
+write $Partial
+
+$ModuleOrClass = ""
+
+if $IsModule
+	$ModuleOrClass = "Module"
+else
+	$ModuleOrClass = "Class"
+endif
+
+write $ModuleOrClass & " "
+
+'Name
+write $Class.parseableName
+
+'Template signature
+if $Class.isTemplate
+	call TemplateSignature( $Class.ownedTemplateSignature )
+endif
+
+$IndentSave = $Indent
+$Indent = $Indent & $IndentStep
+
+'Base
+call ClassifierBaseList( $Class )
+
+'Nested classes
+foreach $InnerClass in $Class.nestedClassifier
+	if $InnerClass.kind = "Class" or $InnerClass.kind = "Interface" or $InnerClass.kind = "Enumeration"
+		call Classifier( $InnerClass )
+	endif
+next
+
+'Attributs
+foreach $Property in $Class.ownedAttribute
+	call Attribute( $Property )
+next
+
+'Operations
+foreach $Operation in $Class.ownedOperation
+	call Operation( $Operation )
+next
+
+$Indent = $IndentSave
+
+write "\n"
+write $Indent & "End " & $ModuleOrClass
+]

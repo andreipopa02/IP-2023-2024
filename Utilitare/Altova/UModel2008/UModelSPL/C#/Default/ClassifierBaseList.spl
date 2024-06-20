@@ -1,0 +1,16 @@
+[
+$Prefix = " :"
+foreach $Generalization in $Classifier.generalization
+	write $Prefix & " " 
+	call Type( $Generalization.general )
+	$Prefix = ","
+next
+
+if $Classifier.kind = "Class" or $Classifier.kind = "AssociationClass"
+	foreach $InterfaceRealization in $Classifier.interfaceRealization
+		write $Prefix & " " 
+		call Type( $InterfaceRealization.contract )
+		$Prefix = ","
+	next
+endif
+]

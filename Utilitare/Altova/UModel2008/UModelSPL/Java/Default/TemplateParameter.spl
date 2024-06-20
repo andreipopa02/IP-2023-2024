@@ -1,0 +1,10 @@
+[
+'Template parameter
+$ParameteredElement = $TemplateParameter.ownedParameteredElement
+
+'name
+write $ParameteredElement.name
+
+'bounds
+call TemplateParameterBounds( $TemplateParameter )
+]

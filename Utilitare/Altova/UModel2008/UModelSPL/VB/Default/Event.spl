@@ -1,0 +1,92 @@
+[
+write  "\n"
+write $Indent
+
+'DocComment
+call DocComment( $Operation )
+
+$Name = $Operation.parseableName
+$OwnerKind = $Operation.owner.kind
+$Modifiers = ""
+$AccessModifiers = ""
+$EventType = ""
+
+foreach $Stereotype in $Operation.appliedStereotype
+	switch( $Stereotype.name )
+		case "Event"
+			foreach $TaggedValue in $Stereotype.taggedValue
+				if $TaggedValue.name = "Type" : $EventType = $TaggedValue.value : endif
+			next
+		case "Friend":	$AccessModifiers = "Friend "
+		case "Shadows": 	$Modifiers = $Modifiers & "Shadows "
+		case "Overridable": 	$Modifiers = $Modifiers & "Overridable "
+		case "Overrides": 	$Modifiers = $Modifiers & "Overrides "
+		case "Attributes": call AttributeSections( $Stereotype )
+	endswitch		
+next
+
+'Modifier
+if $Operation.isPackage and $OwnerKind <> "Interface"	: $AccessModifiers = "Friend "							: endif
+if $Operation.isPublic and $OwnerKind <> "Interface"	: $AccessModifiers = "Public " 							: endif
+if $Operation.isProtected and $OwnerKind <> "Interface"	: $AccessModifiers = "Protected " & $AccessModifiers	: endif
+if $Operation.isPrivate and $OwnerKind <> "Interface"	: $AccessModifiers = "Private " 						: endif
+
+write $AccessModifiers
+
+write $Modifiers
+
+if $Operation.isStatic 		: write "Shared " 			: endif
+if $Operation.isAbstract 	: write "MustOverride " 	: endif
+if $Operation.isLeaf		: write "NotOverridable " 	: endif
+
+'Name
+if $EventType = "Custom"	: write "Custom "			: endif
+write "Event " & $Name
+
+'Parameter
+if $EventType = "Simple"
+	write "("
+	call ParameterList( $Operation )
+	write ")"
+endif
+
+'Return Type
+if $Operation.ownedReturnParameter.Valid
+	write " "			
+	call ReturnParameter( $Operation.ownedReturnParameter )
+endif
+
+foreach $OperationImplementation in $Operation.ownedOperationImplementation
+	if $OperationImplementation.IsFirst : write " Implements " : endif
+	call Type( $OperationImplementation.implementedOperationOwner )
+	write "." & $OperationImplementation.implementedOperationParseableName
+	if not $OperationImplementation.IsLast : write ", " : endif
+next
+
+if $EventType = "Custom" and $OwnerKind <> "Interface"
+	$IndentSave = $Indent
+	$Indent = $Indent & $IndentStep
+	write "\n" & $Indent
+	write "AddHandler(ByVal value "
+	call ReturnParameter( $Operation.ownedReturnParameter )
+	write ")"
+	write "\n" & $Indent
+	write "End AddHandler"
+	write "\n" & $Indent
+	write "RemoveHandler(ByVal value "
+	call ReturnParameter( $Operation.ownedReturnParameter )
+	write ")"
+	write "\n" & $Indent
+	write "End RemoveHandler"
+	write "\n" & $Indent
+	write "RaiseEvent"
+	write "("
+	call ParameterList( $Operation )
+	write ")"
+	write "\n" & $Indent
+	write "End RaiseEvent"
+	$Indent = $IndentSave
+	write "\n" & $Indent
+	write "End Event"
+endif	
+]

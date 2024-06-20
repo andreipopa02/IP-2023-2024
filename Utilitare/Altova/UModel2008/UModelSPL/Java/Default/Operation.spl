@@ -1,0 +1,73 @@
+[
+write  "\n"
+write $Indent
+
+'DocComment
+call DocComment( $Operation )
+
+$OwnerKind = $Operation.owner.kind
+
+$IsConstructor = false
+$IsNative = false
+
+'Modifier
+if $Operation.isPublic and $OwnerKind <> "Interface" 	: write "public " 		: endif
+if $Operation.isProtected					: write "protected "	: endif
+if $Operation.isPrivate						: write "private " 		: endif
+
+if $Operation.isStatic 						: write "static " 		: endif
+if $Operation.isAbstract 					: write "abstract " 	: endif
+
+foreach $Stereotype in $Operation.appliedStereotype
+	switch( $Stereotype.name )
+		case "final":		write "final "
+		case "synchronized": 	write "synchronized "
+		case "native": 		write "native "
+						$IsNative = true
+		case "strictfp": 		write "strictfp "
+		
+		case "annotations": 	call Annotations( $Stereotype )
+		case "constructor":		$IsConstructor = true
+	endswitch
+next
+
+'Template signature
+if $Operation.isTemplate
+	call TemplateSignature( $Operation.ownedTemplateSignature )
+	write " "
+endif
+
+'Type
+$ReturnParameter = $Operation.ownedReturnParameter
+if $IsConstructor = false and $ReturnParameter.Valid
+	$Type = $ReturnParameter.type
+	call Type( $Type )
+
+	foreach $UpperValue in $ReturnParameter.upperValue
+		write "[]"
+	next
+
+	write " "
+
+endif
+
+'Name
+write $Operation.name
+
+write "("
+
+'Parameter
+call ParameterList( $Operation )
+
+write ")"
+
+'Exception
+call OperationExceptionList( $Operation )
+
+if $OwnerKind = "Interface" or $Operation.isAbstract or $IsNative
+	write ";"
+else
+	write "{\n"
+	write $Indent & "}"
+endif
+]

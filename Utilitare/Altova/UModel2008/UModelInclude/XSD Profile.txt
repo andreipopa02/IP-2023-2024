@@ -1,0 +1,1 @@
+The XSD Profile contains datatypes, enumerations, stereotypes and tag definitions for working with XML schemas.

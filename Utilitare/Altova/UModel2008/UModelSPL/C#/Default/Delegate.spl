@@ -1,0 +1,76 @@
+[
+write "\n"
+write $Indent
+
+'DocComment
+call DocComment( $Class )
+
+$Modifiers = ""
+
+foreach $Stereotype in $Class.appliedStereotype
+	switch( $Stereotype.name )
+		case "internal":
+			if $Class.isProtected
+				$Modifiers = "internal " & $Modifiers
+			endif
+
+		case "unsafe": 	$Modifiers = $Modifiers & "unsafe "
+		case "new": 	$Modifiers = $Modifiers & "new "
+
+		case "attributes": call AttributeSections( $Stereotype )
+	endswitch		
+next
+
+'Modifier
+if $Class.isPackage	: write "internal "		: endif
+if $Class.isPublic		: write "public " 		: endif
+if $Class.isProtected	: write "protected "	: endif
+if $Class.isPrivate		: write "private " 		: endif
+
+write $Modifiers
+
+if $Class.isAbstract	: write "abstract " 	: endif
+if $Class.isLeaf		: write "sealed " 		: endif
+
+write "delegate "
+
+$HasTypeAndParameter = false
+
+foreach $Operation in $Class.ownedOperation
+	if $HasTypeAndParameter = false
+		$HasTypeAndParameter = true
+
+		'Return Type
+		call ReturnParameter( $Operation.ownedReturnParameter )
+		write " "			
+		
+		'Name
+		write $Class.parseableName
+		
+		'Template signature
+		if $Class.isTemplate
+			call TemplateSignature( $Class.ownedTemplateSignature )
+		endif
+		
+		write "("			
+		'Parameter
+		call ParameterList( $Operation )			
+		write ");"
+	endif
+next	
+
+if $HasTypeAndParameter = false
+		'Type
+		write "void "
+		
+		'Name
+		write $Class.parseableName
+		
+		'Template signature
+		if $Class.isTemplate
+			call TemplateSignature( $Class.ownedTemplateSignature )
+		endif
+				
+		write "();"
+endif
+]

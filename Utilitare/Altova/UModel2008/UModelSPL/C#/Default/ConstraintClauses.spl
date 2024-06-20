@@ -1,0 +1,11 @@
+[
+'Constraints
+ if $TemplateableElement.isTemplate
+	$TemplateSignature = $TemplateableElement.ownedTemplateSignature 
+	if $TemplateSignature.Valid
+		foreach $TemplateParameter in $TemplateSignature.ownedParameter
+			call TemplateParameterConstraints( $TemplateParameter )
+		next
+	endif
+ endif
+]

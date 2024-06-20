@@ -1,0 +1,1 @@
+Java contains classes, interfaces and packages from the java.* packages of JDK 1.5.0_09 (java.lang, java.io, java.util, java.math, java.awt,...)

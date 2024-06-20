@@ -1,0 +1,9 @@
+[
+'Exceptions
+$Prefix = " throws"
+foreach $Exception in $Operation.raisedException
+	write $Prefix & " " 
+	call Type( $Exception )
+	$Prefix = ","
+next
+]

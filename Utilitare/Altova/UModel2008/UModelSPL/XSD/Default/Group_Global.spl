@@ -1,0 +1,53 @@
+[
+'UML_element -> $Class
+$XML_element = $NamespacePrefix & "group"
+
+write $Indent & "<" & $XML_element
+
+' XML attributes
+$Name = $Class.name
+
+write " name=" & "\"" & $Name & "\""
+
+foreach $Stereotype in $Class.appliedStereotype
+	switch( $Stereotype.name )
+		case "group":
+			foreach $TaggedValue in $Stereotype.taggedValue
+				$ValueName = $TaggedValue.name
+				$Value = $TaggedValue.value
+				
+				if( $Value <> "" )
+					write " " & $ValueName & "=" & "\"" & $Value & "\""
+				endif
+			next	
+	endswitch		
+next
+
+' end of XML attributes
+write ">\n"
+
+' content
+$IndentSave = $Indent
+$Indent = $Indent & $IndentStep
+
+' annotation
+call Annotation( $Class )
+
+foreach $Property in $Class.ownedAttribute
+	$Type = $Property.type
+	if( $Type.Valid)
+		foreach $Type_Stereotype in $Type.appliedStereotype
+			switch ($Type_Stereotype.name)
+				case "sequence":	call Sequence( $Type, $Property )
+				case "choice":	call Choice( $Type, $Property )
+				case "all": 		call All( $Type, $Property )		
+			endswitch
+		next
+	endif
+next
+
+' end of content
+$Indent = $IndentSave
+
+write $Indent & "</" & $XML_element & ">\n"
+]

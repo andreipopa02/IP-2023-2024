@@ -1,0 +1,97 @@
+[
+write  "\n"
+write $Indent
+
+'DocComment
+call DocComment( $Operation )
+
+$OwnerKind = $Operation.owner.kind
+$Name = $Operation.parseableName
+
+$HasBody = true
+$Modifiers = ""
+$Partial = ""
+$AccessModifiers = ""
+$IsConstructor = false
+$IsDestructor = false
+$WriteAccessModifier = true
+
+foreach $Stereotype in $Operation.appliedStereotype
+	switch( $Stereotype.name )
+		case "internal":	$AccessModifiers = "internal "
+		case "unsafe": 	$Modifiers = $Modifiers & "unsafe "
+		case "new": 	$Modifiers = $Modifiers & "new "
+		case "virtual": 	$Modifiers = $Modifiers & "virtual "
+		case "override": 	$Modifiers = $Modifiers & "override "
+		case "extern": 	$Modifiers = $Modifiers & "extern "
+					$HasBody = false
+		
+		case "attributes": call AttributeSections( $Stereotype )
+		case "constructor":		$IsConstructor = true
+		case "destructor":		$IsDestructor = true
+		case "partial":			$Partial = "partial "
+							$WriteAccessModifier = false
+							$HasBody = false
+	endswitch		
+next
+
+if ($IsConstructor and $Operation.isStatic) or $IsDestructor or $Operation.implementedInterface.Valid
+	$WriteAccessModifier = false
+endif
+
+'Modifier
+if $Operation.isPackage						: $AccessModifiers = "internal "				: endif
+if $Operation.isPublic and $OwnerKind <> "Interface"	: $AccessModifiers = "public " 				: endif
+if $Operation.isProtected					: $AccessModifiers = "protected " & $AccessModifiers	: endif
+if $Operation.isPrivate						: $AccessModifiers = "private " 				: endif
+
+if $WriteAccessModifier
+	write $AccessModifiers
+endif
+
+write $Modifiers
+
+if $Operation.isStatic 		: write "static " 		: endif
+if $Operation.isAbstract 	: write "abstract " 	: $HasBody = false : endif
+if $Operation.isLeaf		: write "sealed " 		: endif
+
+write $Partial
+
+'Return Type
+if $IsConstructor = false and $IsDestructor = false
+	call ReturnParameter( $Operation.ownedReturnParameter )
+	write " "			
+endif
+
+'Implemented Interface
+if $Operation.implementedInterface.Valid
+	call Type( $Operation.implementedInterface )
+	write "."			
+endif
+
+'Name
+write $Name
+
+'Template signature
+if $Operation.isTemplate
+	call TemplateSignature( $Operation.ownedTemplateSignature )
+endif
+
+write "("
+
+'Parameter
+call ParameterList( $Operation )
+
+write ")"
+
+'Constraint clause
+call ConstraintClauses( $Operation )
+
+if $OwnerKind = "Interface" or $HasBody = false 
+	write ";"
+else
+	write "\n"
+	write $Indent & "{\n"
+	write $Indent & "}"
+endif
+]

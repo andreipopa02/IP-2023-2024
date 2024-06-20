@@ -1,0 +1,38 @@
+[
+'UML_element -> $DataType
+$XML_element = $NamespacePrefix & "notation"
+
+write $Indent & "<" & $XML_element
+
+' XML attributes
+$Name = $DataType.name
+
+write " name=" & "\"" & $Name & "\""
+
+foreach $Stereotype in $DataType.appliedStereotype
+	switch( $Stereotype.name )
+		case "notation":
+			foreach $TaggedValue in $Stereotype.taggedValue
+				$ValueName = $TaggedValue.name
+				$Value = $TaggedValue.value
+				if( $Value <> "" )
+					write " " & $ValueName & "=" & "\"" & $Value & "\""
+				endif
+			next	
+	endswitch		
+next
+
+' end of XML attributes
+write ">\n"
+
+' content
+$IndentSave = $Indent
+$Indent = $Indent & $IndentStep
+
+call Annotation( $DataType )
+
+' end of content
+$Indent = $IndentSave
+
+write $Indent & "</" & $XML_element & ">\n"
+]

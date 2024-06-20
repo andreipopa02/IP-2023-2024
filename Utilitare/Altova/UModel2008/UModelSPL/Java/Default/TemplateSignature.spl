@@ -1,0 +1,15 @@
+[
+'Template signature
+if $TemplateSignature.Valid
+	$Prefix = "<"
+	$Postfix = ""
+	foreach $TemplateParameter in $TemplateSignature.ownedParameter
+		write $Prefix 
+		call TemplateParameter( $TemplateParameter )
+		$Prefix = ","
+		$Postfix = ">" 
+	next
+
+	write $Postfix
+endif
+]

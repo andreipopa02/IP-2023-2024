@@ -1,0 +1,1 @@
+Contains accessible namespaces and types from from Microsoft.NET3.5 (v3.5.21022) for VB 9.0 (without operations and properties).

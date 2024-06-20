@@ -1,0 +1,10 @@
+[
+$Prefix = ""
+foreach $Parameter in $Operation.ownedParameter
+	if not $Parameter.isReturn
+		write $Prefix
+		call Parameter( $Parameter )
+		$Prefix = ", "
+	endif
+next
+]

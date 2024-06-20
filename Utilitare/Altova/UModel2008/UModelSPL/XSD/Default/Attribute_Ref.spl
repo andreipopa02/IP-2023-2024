@@ -1,0 +1,57 @@
+[
+'UML_element -> $Class, $Property
+$XML_element = $NamespacePrefix & "attribute"
+
+write $Indent & "<" & $XML_element
+
+' XML attributes
+
+$IsFixedDefault = false
+
+write " ref=" & "\"" 
+call Reference( $Class )
+write "\""
+
+foreach $Stereotype in $Property.appliedStereotype
+	switch( $Stereotype.name )
+		case "attribute":
+			foreach $TaggedValue in $Stereotype.taggedValue
+				$ValueName = $TaggedValue.name
+				$Value = $TaggedValue.value
+				
+				if( $Value <> "" )
+					if( $ValueName = "fixed" )
+						if( $Value = "true" )
+							$IsFixedDefault = true
+						endif
+					else
+						write " " & $ValueName & "=" & "\"" & $Value & "\""
+					endif
+				endif
+			next	
+	endswitch		
+next
+
+$Default = $Property.defaultValue.value
+if( $Default <> "" )
+	if( $IsFixedDefault )
+		write " fixed=" & "\"" & $Default & "\""		
+	else
+		write " default=" & "\"" & $Default & "\""		
+	endif
+endif
+
+' end of XML attributes
+write ">\n"
+
+' content
+$IndentSave = $Indent
+$Indent = $Indent & $IndentStep
+
+call Annotation( $Property )
+
+' end of content
+$Indent = $IndentSave
+
+write $Indent & "</" & $XML_element & ">\n"
+]

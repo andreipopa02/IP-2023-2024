@@ -1,0 +1,8 @@
+[
+$Prefix = " extends"
+foreach $Bound in $TemplateParameter.constrainingClassifier
+	write $Prefix & " " 
+	call Type( $Bound )
+	$Prefix = " &"
+next
+]

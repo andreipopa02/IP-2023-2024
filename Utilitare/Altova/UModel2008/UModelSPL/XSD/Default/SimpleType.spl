@@ -1,0 +1,65 @@
+[
+'UML_element -> $DataType
+$XML_element = $NamespacePrefix & "simpleType"
+
+write $Indent & "<" & $XML_element
+
+' XML attributes
+$Name = $DataType.name
+$IsList = false
+$IsUnion = false
+
+$XML_attributes = ""
+
+foreach $Stereotype in $DataType.appliedStereotype
+	switch( $Stereotype.name )
+		case "simpleType":
+			foreach $TaggedValue in $Stereotype.taggedValue
+				$ValueName = $TaggedValue.name
+				$Prefix = " " & $ValueName & "=" & "\""
+				$Postfix = ""
+				foreach $SingleValue in $TaggedValue.values
+					$Value = $SingleValue.value
+					if( $Value <> "" )
+						$XML_attributes = $XML_attributes & $Prefix & $Value					
+						$Prefix = " "
+						$Postfix =  "\""
+					endif
+				next
+				$XML_attributes = $XML_attributes & $Postfix
+			next	
+		case "list":		$IsList = true
+		case "union":	$IsUnion = true		
+		case "global":
+			if( $Name <> "" )
+				$XML_attributes = " name=" & "\"" & $Name & "\"" & $XML_attributes
+			endif
+	endswitch		
+next
+
+write $XML_attributes
+
+' end of XML attributes
+write ">\n"
+
+' content
+$IndentSave = $Indent
+$Indent = $Indent & $IndentStep
+
+call Annotation( $DataType )
+
+if( $IsList )
+	call List( $DataType )
+else
+	if( $IsUnion )
+		call Union( $DataType )
+	else
+		call SimpleType_Base( $DataType )
+	endif
+endif
+
+' end of content
+$Indent = $IndentSave
+
+write $Indent & "</" & $XML_element & ">\n"
+]

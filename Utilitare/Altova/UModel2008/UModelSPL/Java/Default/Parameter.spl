@@ -1,0 +1,31 @@
+[
+'Modifier
+foreach $Stereotype in $Parameter.appliedStereotype
+	switch( $Stereotype.name )
+		case "final": 		write "final "
+		
+		case "annotations": 	call Annotations( $Stereotype )
+	endswitch
+next
+
+'Type
+call Type( $Parameter.type )
+
+'Dimension
+foreach $UpperValue in $Parameter.upperValue
+	write "[]"
+next
+
+if $Parameter.isVarArgList
+	write "..."
+endif
+
+write " "
+
+'Name
+write $Parameter.name
+
+'Default value
+$DefaultValue = $Parameter.defaultValue.value
+if $DefaultValue <> "" : write " = " & $DefaultValue : endif
+]

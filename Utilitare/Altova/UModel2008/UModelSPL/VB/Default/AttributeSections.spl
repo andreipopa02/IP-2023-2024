@@ -1,0 +1,19 @@
+[
+$OwnerKind = $Stereotype.owner.kind
+
+foreach $TaggedValue in $Stereotype.taggedValue
+	if $TaggedValue.name = "sections"
+		foreach $SingleValue in $TaggedValue.values
+			$Sections = $SingleValue.value
+			if $Sections <> ""
+				write "<" & $Sections & ">"
+				if $OwnerKind = "Parameter" or $OwnerKind = "TemplateParameter" or $OwnerKind = "ClassifierTemplateParameter"
+					write " "
+				else
+					write " _\n" & $Indent
+				endif
+			endif
+		next
+	endif
+next
+]
