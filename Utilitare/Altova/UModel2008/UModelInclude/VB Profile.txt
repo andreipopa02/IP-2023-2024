@@ -1,0 +1,1 @@
+The VB Profile contains datatypes and stereotypes for VB and is essential for VB RoundTrip Engineering.

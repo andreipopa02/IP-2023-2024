@@ -1,0 +1,15 @@
+[
+'Template parameter
+
+$ParameteredElement = $TemplateParameter.ownedParameteredElement
+if $ParameteredElement.Valid
+	foreach $Stereotype in $TemplateParameter.appliedStereotype
+		switch( $Stereotype.name )
+			case "attributes": call AttributeSections( $Stereotype )
+		endswitch		
+	next
+	
+	'name
+	write $ParameteredElement.parseableName
+endif
+]

@@ -1,0 +1,38 @@
+[
+$Property = $Stereotype.owner
+$Modifiers = ""
+
+foreach $TaggedValue in $Stereotype.taggedValue
+	if $TaggedValue.name = "visibility"
+		switch( $TaggedValue.value )
+			case "Friend":
+				$Modifiers = "Friend "
+			case "Protected":
+				$Modifiers = "Protected "
+			case "Private":
+				$Modifiers = "Private "
+			case "Protected Friend":
+				$Modifiers = "Protected Friend "
+			case "Friend Protected":
+				$Modifiers = "Protected Friend "
+		endswitch
+	endif
+next
+
+switch ($Stereotype.name)
+	case "GetAccessor":
+		write "\n" & $Indent
+		write $Modifiers & "Get"
+		write "\n" & $Indent
+		write "End Get"
+	case "SetAccessor":
+		write "\n" & $Indent
+		write $Modifiers & "Set(ByVal value As "
+		call Type( $Property.ownedReturnParameter.type )
+		foreach $UpperValue in $Property.ownedReturnParameter.upperValue
+			write "()"
+		next
+		write ")\n" & $Indent
+		write "End Set"
+endswitch
+]

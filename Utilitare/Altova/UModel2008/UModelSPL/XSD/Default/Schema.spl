@@ -1,0 +1,95 @@
+[
+'UML_element -> $Class
+$XML_element_name = $NamespacePrefix & "schema"
+
+write "<" & $XML_element_name
+
+' XML attributes
+
+$TargetNamespace = $Class.owningNamespacePackage
+if( $TargetNamespace.Valid )
+	write " targetNamespace=" & "\"" & $TargetNamespace.name & "\""
+endif
+
+foreach $Stereotype in $Class.appliedStereotype
+	switch( $Stereotype.name )
+		case "schema":
+			foreach $TaggedValue in $Stereotype.taggedValue
+				$ValueName = $TaggedValue.name				
+				if( $ValueName = "xmlns" )
+					foreach $SingleValue in $TaggedValue.values
+						$Value = $SingleValue.value
+						$Find = $Value.Find( "=" )
+						if( $Find < 0 )
+							write " " & $ValueName & "=" & "\"" & $Value & "\""
+						else
+							$Prefix = $Value.Left( $Find )
+							$Ns = $Value.Mid(  $Find+1 )
+							write " " & $ValueName & ":" & $Prefix & "=" & "\"" & $Ns & "\""
+						endif
+					next
+				else
+					if( $ValueName <> "encoding" )
+						$Prefix = " " & $ValueName & "=" & "\""
+						$Postfix = ""
+						foreach $SingleValue in $TaggedValue.values
+							$Value = $SingleValue.value
+							if( $Value <> "" )
+								write $Prefix & $Value
+								$Prefix = " "
+								$Postfix =  "\""
+							endif
+						next
+						write $Postfix
+					endif
+				endif
+			next	
+	endswitch		
+next
+
+' end of XML attributes
+write ">\n"
+
+' content
+$Indent = $Indent & $IndentStep
+
+call Annotation( $Class )
+
+call Schema_Ref( $Class )
+
+foreach $InnerClass in $Class.nestedClassifier
+	$IsGlobal = false
+	$IsRedefine = false
+	foreach $Stereotype_Info in $InnerClass.appliedStereotype
+		switch( $Stereotype_Info.name )
+			case "global": 	$IsGlobal = true
+			case "redefine": 	$IsRedefine = true
+		endswitch		
+	next	
+	foreach $Stereotype in $InnerClass.appliedStereotype
+		switch ($Stereotype.name)
+			case "notation":		if( $IsRedefine = false ) : call Notation( $InnerClass ) 			: endif
+			case "attribute":		if( $IsRedefine = false ) : call AttributeGlobal( $InnerClass ) 		: endif
+			case "attributeGroup":	if( $IsRedefine = false ) : call AttributeGroup_Global( $InnerClass )	: endif
+			case "group":  		if( $IsRedefine = false ) : call Group_Global( $InnerClass )			: endif
+			case "element":  		if( $IsRedefine = false ) : call ElementGlobal( $InnerClass )			: endif
+			case "complexType":
+				if( $IsRedefine = false and $IsGlobal )
+					if( $InnerClass.kind = "Class" )
+						call ComplexType( $InnerClass )
+					else
+						call ComplexType_SimpleContent( $InnerClass )
+					endif
+				endif
+			case "simpleType":  	
+				if( $IsRedefine = false and $IsGlobal )
+					call SimpleType( $InnerClass )
+				endif
+		endswitch
+	next
+next
+
+' end of content
+
+write "</" & $XML_element_name & ">\n"
+]

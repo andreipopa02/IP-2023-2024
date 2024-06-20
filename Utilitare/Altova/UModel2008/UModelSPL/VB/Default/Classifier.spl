@@ -1,0 +1,40 @@
+[
+'Namespace
+$NamespaceDecl = ""
+$NamespaceDeclUnescaped = ""
+
+$RootNamespace = $Classifier.rootNamespace
+$RootNamespace = $RootNamespace.MakeLower()
+$RootNamespaceReplaced = false
+
+if $Classifier.owner.kind = "Package"
+	$Prefix = ""
+	foreach $Namespace in $Classifier.namespace
+		$NamespaceDecl = $NamespaceDecl & $Prefix & $Namespace.parseableName
+		$NamespaceName = $Namespace.name
+		$NamespaceName = $NamespaceName.MakeLower()
+		$NamespaceDeclUnescaped = $NamespaceDeclUnescaped & $Prefix & $NamespaceName
+		$Prefix = "."
+		if not $RootNamespaceReplaced and $NamespaceDeclUnescaped = $RootNamespace
+			$NamespaceDeclUnescaped = ""
+			$NamespaceDecl = ""
+			$Prefix = ""
+			$RootNamespaceReplaced = true
+		endif
+	next
+endif
+
+if $NamespaceDecl = ""
+	'Classifier
+	call Classifier( $Classifier )
+else
+	write "\n" & $Indent & "Namespace " & $NamespaceDecl
+	$IndentSave = $Indent
+	$Indent = $Indent & $IndentStep
+	
+	'Classifier
+	call Classifier( $Classifier )
+	$Indent = $IndentSave
+	write "\n" & $Indent & "End Namespace"
+endif
+]

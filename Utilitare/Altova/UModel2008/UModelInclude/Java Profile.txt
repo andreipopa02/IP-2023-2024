@@ -1,0 +1,1 @@
+The Java Profile contains datatypes and stereotypes for Java and is essential for Java RoundTrip Engineering.

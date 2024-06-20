@@ -1,0 +1,6 @@
+[
+foreach $EnumerationLiteral in $Enumeration.ownedLiteral
+	call EnumerationLiteral( $EnumerationLiteral )
+	write ","
+next
+]

@@ -1,0 +1,17 @@
+[
+$Prefix = "\n" & $Indent & "Inherits"
+foreach $Generalization in $Classifier.generalization
+	write $Prefix & " "
+	call Type( $Generalization.general )
+	$Prefix = ","
+next
+
+$Prefix = "\n" & $Indent & "Implements"
+if $Classifier.kind = "Class" or $Classifier.kind = "AssociationClass"
+	foreach $InterfaceRealization in $Classifier.interfaceRealization
+		write $Prefix & " "
+		call Type( $InterfaceRealization.contract )
+		$Prefix = ","
+	next
+endif
+]

@@ -1,0 +1,76 @@
+[
+write "\n"
+write $Indent
+
+'DocComment
+call DocComment( $Interface )
+
+$OwnerKind = $Interface.owner.kind
+
+$Modifiers = ""
+$AccessModifiers = ""
+
+foreach $Stereotype in $Interface.appliedStereotype
+	switch( $Stereotype.name )
+		case "Friend":		$AccessModifiers = "Friend "
+		case "Shadows": 	$Modifiers = $Modifiers & "Shadows "
+		case "Attributes":	call AttributeSections( $Stereotype )
+	endswitch		
+next
+
+'Modifier
+if $Interface.isPublic and $OwnerKind <> "Interface"
+$AccessModifiers = "Public "
+endif
+if $Interface.isPackage
+$AccessModifiers = "Friend "
+endif
+if $Interface.isProtected
+$AccessModifiers = "Protected " & $AccessModifiers
+endif
+if $Interface.isPrivate
+$AccessModifiers = "Private "
+endif
+
+write $AccessModifiers
+
+write $Modifiers
+
+write "Interface "
+
+'Name
+write $Interface.parseableName
+
+'Template signature
+if $Interface.isTemplate
+	call TemplateSignature( $Interface.ownedTemplateSignature )
+endif
+
+$IndentSave = $Indent
+$Indent = $Indent & $IndentStep
+
+'Base
+call ClassifierBaseList( $Interface )
+
+'Nested classifier
+foreach $InnerClass in $Interface.nestedClassifier
+	if $InnerClass.kind = "Class" or $InnerClass.kind = "Interface" or $InnerClass.kind = "Enumeration"
+		call Classifier( $InnerClass )
+	endif
+next
+
+'Attributs
+foreach $Property in $Interface.ownedAttribute
+	call Attribute( $Property )
+next
+
+'Operations
+foreach $Operation in $Interface.ownedOperation
+	call Operation( $Operation )
+next
+
+$Indent = $IndentSave
+
+write "\n"
+write $Indent & "End Interface"
+]

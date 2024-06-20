@@ -1,0 +1,57 @@
+[
+'UML_element -> $Class, $Property
+$XML_element = $NamespacePrefix & "group"
+
+write $Indent & "<" & $XML_element
+
+' XML attributes
+
+write " ref=" & "\""
+call Reference( $Class )
+write "\""
+
+foreach $Stereotype in $Property.appliedStereotype
+	switch( $Stereotype.name )
+		case "group":
+			foreach $TaggedValue in $Stereotype.taggedValue
+				$ValueName = $TaggedValue.name
+				$Value = $TaggedValue.value
+				
+				if( $Value <> "" )
+					write " " & $ValueName & "=" & "\"" & $Value & "\""
+				endif
+			next	
+	endswitch		
+next
+
+foreach $Lower in $Property.lowerValue
+	$LowerValue = $Lower.value
+	if( $LowerValue <> "" )
+		write " minOccurs=" & "\"" & $LowerValue & "\""
+	endif
+next
+foreach $Upper in $Property.upperValue
+	$UpperValue = $Upper.value
+	if( $UpperValue <> "" )
+		if( $UpperValue = "*")
+			write " maxOccurs=" & "\"" & "unbounded" & "\""
+		else
+			write " maxOccurs=" & "\"" & $UpperValue & "\""
+		endif
+	endif
+next
+
+' end of XML attributes
+write ">\n"
+
+' content
+$IndentSave = $Indent
+$Indent = $Indent & $IndentStep
+
+call Annotation( $Property )
+
+' end of content
+$Indent = $IndentSave
+
+write $Indent & "</" & $XML_element & ">\n"
+]

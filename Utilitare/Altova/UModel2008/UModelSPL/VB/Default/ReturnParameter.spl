@@ -1,0 +1,28 @@
+[
+if $Parameter.Valid	
+	$IsNullable = false
+
+	write "As "
+
+	foreach $Stereotype in $Parameter.appliedStereotype
+		switch( $Stereotype.name )
+			case "Nullable" : $IsNullable = true
+			case "Attributes": call AttributeSections( $Stereotype )
+		endswitch		
+	next
+	
+	'Type
+	call Type( $Parameter.type )
+
+	'Nullable
+	if $IsNullable : write "?" : endif
+
+	'Type modifier
+	write $Parameter.postTypeModifier
+
+	'Dimension
+	foreach $UpperValue in $Parameter.upperValue
+		write "()"
+	next
+endif	
+]

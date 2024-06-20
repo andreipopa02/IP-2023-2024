@@ -1,0 +1,86 @@
+[
+'UML_element -> $Generalization
+$XML_element = $NamespacePrefix & "restriction"
+
+$Class = $Generalization.owner
+$General = $Generalization.general
+
+write $Indent & "<" & $XML_element
+
+' XML attributes
+
+foreach $Stereotype in $Generalization.appliedStereotype
+	switch( $Stereotype.name )
+		case "restriction":
+			foreach $TaggedValue in $Stereotype.taggedValue
+				$ValueName = $TaggedValue.name
+				$Value = $TaggedValue.value
+				
+				if( $Value <> "" )
+					write " " & $ValueName & "=" & "\"" & $Value & "\""
+				endif
+			next	
+	endswitch		
+next
+
+write " base=" & "\"" 
+call Type( $General )
+write "\""
+
+' end of XML attributes
+write ">\n"
+
+' content
+$IndentSave = $Indent
+$Indent = $Indent & $IndentStep
+
+call Annotation( $Generalization )
+
+foreach $Property in $Class.ownedAttribute
+	$IsDone = false
+	foreach $Stereotype_Property in $Property.appliedStereotype
+		if( $IsDone = false )
+			switch( $Stereotype_Property.name )
+				case "group":		
+					call Group( $Property )
+					$IsDone = true
+				case "attributeGroup":	
+					call AttributeGroup( $Property )
+					$IsDone = true
+				case "attribute":		
+					call Attribute( $Property )
+					$IsDone = true
+				case "anyAttribute":	
+					call AnyAttribute( $Property )
+					$IsDone = true
+			endswitch
+		endif
+	next
+	
+	if( $IsDone = false )
+		$Type = $Property.type
+		if( $Type.Valid)
+			foreach $Stereotype_Type in $Type.appliedStereotype
+				if( $IsDone = false )
+					switch ($Stereotype_Type.name)
+						case "sequence":	
+							call Sequence( $Type, $Property )
+							$IsDone = true
+						case "choice":	
+							call Choice( $Type, $Property )
+							$IsDone = true
+						case "all": 		
+							call All( $Type, $Property )
+							$IsDone = true
+					endswitch
+				endif
+			next
+		endif
+	endif
+next
+
+' end of content
+$Indent = $IndentSave
+
+write $Indent & "</" & $XML_element & ">\n"
+]

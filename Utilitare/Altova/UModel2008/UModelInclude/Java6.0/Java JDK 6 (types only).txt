@@ -1,0 +1,1 @@
+Contains accessible packages and types from from Sun Java SE 6 (JDK1.6.0_04) for Java 6 (without operations and properties).

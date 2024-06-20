@@ -1,0 +1,56 @@
+[
+write "\n"
+write $Indent
+
+'DocComment
+call DocComment( $EnumerationLiteral )
+
+'Modifier
+foreach $Stereotype in $EnumerationLiteral.appliedStereotype
+	switch( $Stereotype.name )
+		case "annotations": 	call Annotations( $Stereotype )
+	endswitch
+next
+
+'Name
+write $EnumerationLiteral.name
+
+'Default value
+$DefaultValue = $EnumerationLiteral.defaultValue
+if $DefaultValue <> "" : write "(" & $DefaultValue & ")": endif
+
+$Prefix = "{"
+
+$IndentSave = $Indent
+$Indent = $Indent & $IndentStep
+
+'Nested classes
+foreach $InnerClass in $EnumerationLiteral.nestedClassifier
+	if $InnerClass.kind = "Class"
+		write $Prefix
+		$Prefix = ""
+		call Classifier( $InnerClass )
+	endif
+next
+
+'Attributs
+foreach $Property in $EnumerationLiteral.ownedAttribute
+	write $Prefix
+	$Prefix = ""
+	call Attribute( $Property )
+next
+
+'Operations
+foreach $Operation in $EnumerationLiteral.ownedOperation
+	write $Prefix
+	$Prefix = ""
+	call Operation( $Operation )
+next
+
+$Indent = $IndentSave
+
+if $Prefix = ""
+	write "\n"
+	write $Indent & "}"
+endif
+]

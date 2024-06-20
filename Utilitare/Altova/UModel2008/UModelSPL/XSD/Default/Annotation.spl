@@ -1,0 +1,45 @@
+[
+'UML_element -> $Element
+
+$XML_element = $NamespacePrefix & "annotation"
+
+$AnnotationPrefix = $Indent & "<" & $XML_element & ">\n"
+$AnnotationPostfix = $Indent & "</" & $XML_element & ">\n"
+
+' content
+$IndentSave = $Indent
+$Indent = $Indent & $IndentStep
+
+foreach $Comment in $Element.ownedComment
+	$IsDone = false
+	foreach $Stereotype in $Comment.appliedStereotype
+		if( $IsDone = false )
+			switch( $Stereotype.name )
+				case "documentation":	
+					write $AnnotationPrefix
+					$AnnotationPrefix = ""
+					call Documentation( $Comment )
+					$IsDone = true
+				case "appinfo":		
+					write $AnnotationPrefix
+					$AnnotationPrefix = ""
+					call Appinfo( $Comment )
+					$IsDone = true
+			endswitch
+		endif
+	next
+		
+	if( $IsDone = false )
+		write $AnnotationPrefix
+		$AnnotationPrefix = ""
+		call Documentation( $Comment )
+	endif
+next
+
+if( $AnnotationPrefix = "" )
+	write $AnnotationPostfix
+endif
+
+' end of content
+$Indent = $IndentSave
+]

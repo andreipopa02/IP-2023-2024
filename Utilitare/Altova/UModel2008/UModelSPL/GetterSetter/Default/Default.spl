@@ -1,0 +1,87 @@
+[
+$PropertyName 	= $Property.name
+$TypeName  	= $Property.type.displayTypeName
+
+$OperationName 	= $PropertyName.RemoveLeft( "m_" )
+
+if $Options.generateSetter and not $Options.generateGetter
+	'documentation
+	if $Options.generateComments
+		$documentation = ""
+	endif
+	
+	'visibility
+	$visibility = "public"
+	
+	'abstract
+	$isAbstract = false
+	
+	'static
+	$isStatic = false
+
+	'leaf
+	$isLeaf = false
+
+	'name
+	write "Set" & $OperationName
+	
+	write "("
+	
+	'parameter
+	write "in"
+	write " "
+	write $OperationName
+	if $TypeName <> ""
+		write ":"
+		write $TypeName
+	endif
+	write ")"
+	
+	'type
+	write ":"
+	write "void"
+endif
+
+if $Options.generateGetter and not $Options.generateSetter
+	'documentation
+	if $Options.generateComments
+		$documentation = ""
+	endif
+
+	'visibility
+	$visibility = "public"
+	
+	'abstract
+	$isAbstract = false
+	
+	'static
+	$isStatic = false
+	
+	'leaf
+	$isLeaf = false
+	
+	if $TypeName = "Boolean"
+		'name
+		write "Is" & $OperationName
+		
+		write "("
+		write ")"
+		
+		'type
+		write ":"
+		write $TypeName
+	else
+		'name
+		write "Get" & $OperationName
+		
+		write "("
+		write ")"
+		
+		'type
+		if $TypeName <> ""
+			write ":"
+			write $TypeName
+		endif
+	endif		
+endif
+]

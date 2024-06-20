@@ -1,0 +1,93 @@
+[
+'UML_element -> $ElementImport
+$XML_element = $NamespacePrefix & "redefine"
+
+$Class = $ElementImport.owner
+$Import = $ElementImport.importedElement
+
+write $Indent & "<" & $XML_element
+
+' XML attributes
+
+foreach $Stereotype in $ElementImport.appliedStereotype
+	switch( $Stereotype.name )
+		case "redefine":
+			foreach $TaggedValue in $Stereotype.taggedValue
+				$ValueName = $TaggedValue.name
+				$Value = $TaggedValue.value
+				
+				if( $Value <> "" )
+					write " " & $ValueName & "=" & "\"" & $Value & "\""
+				endif
+			next	
+	endswitch		
+next	
+
+' end of XML attributes
+write ">\n"
+
+' content
+$IndentSave = $Indent
+$Indent = $Indent & $IndentStep
+
+call Annotation( $ElementImport )
+
+foreach $InnerClass in $Class.nestedClassifier
+	$IsGlobal = false
+	$IsRedefine = false
+	$RedefineKind = ""
+	foreach $Stereotype_Info in $InnerClass.appliedStereotype
+		switch( $Stereotype_Info.name )
+			case "global": 	$IsGlobal = true
+			case "redefine": 	
+				if( $Import.kind = "Class" )
+					foreach $InnerClass_Import in $Import.nestedClassifier
+						if( $InnerClass_Import.name = $InnerClass.name)
+							foreach $Stereotype_Import in $InnerClass_Import.appliedStereotype
+								$Stereotype_ImportName = $Stereotype_Import.name
+								switch ( $Stereotype_ImportName )
+									case "notation":
+									case "attribute":
+									case "attributeGroup":
+									case "group":
+									case "element":
+									case "complexType":
+									case "simpleType":  	
+										$RedefineKind = $Stereotype_ImportName
+										$IsRedefine = true
+								endswitch
+							next
+						endif
+					next
+				endif				
+		endswitch		
+	next	
+	foreach $Stereotype in $InnerClass.appliedStereotype
+		$StereotypeName = $Stereotype.name
+		switch ( $StereotypeName )
+			case "notation":		if( $IsRedefine and $RedefineKind = $StereotypeName )  : call Notation( $InnerClass ) 			: endif
+			case "attribute":		if( $IsRedefine and $RedefineKind = $StereotypeName  ) : call AttributeGlobal( $InnerClass ) 		: endif
+			case "attributeGroup":	if( $IsRedefine and $RedefineKind = $StereotypeName  ) : call AttributeGroup_Global( $InnerClass )	: endif
+			case "group":  		if( $IsRedefine and $RedefineKind = $StereotypeName  ) : call Group_Global( $InnerClass )		: endif
+			case "element":  		if( $IsRedefine and $RedefineKind = $StereotypeName  ) : call ElementGlobal( $InnerClass )		: endif
+			case "complexType":
+				if( $IsRedefine  and $RedefineKind = $StereotypeName and $IsGlobal )
+					if( $InnerClass.kind = "Class" )
+						call ComplexType( $InnerClass )
+					else
+						call ComplexType_SimpleContent( $InnerClass )
+					endif
+				endif
+			case "simpleType":  	
+				if( $IsRedefine  and $RedefineKind = $StereotypeName and $IsGlobal )
+					call SimpleType( $InnerClass )
+				endif
+		endswitch
+	next
+next
+
+' end of content
+$Indent = $IndentSave
+
+write $Indent & "</" & $XML_element & ">\n"
+]

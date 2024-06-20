@@ -1,0 +1,79 @@
+[
+'UML_element -> $Property
+$XML_element = $NamespacePrefix & "attribute"
+
+write $Indent & "<" & $XML_element
+
+' XML attributes
+$Name = $Property.name
+$IsFixedDefault = false
+
+write " name=" & "\"" & $Name & "\""
+
+foreach $Stereotype in $Property.appliedStereotype
+	switch( $Stereotype.name )
+		case "attribute":
+			foreach $TaggedValue in $Stereotype.taggedValue
+				$ValueName = $TaggedValue.name
+				$Value = $TaggedValue.value
+				
+				if( $Value <> "" )
+					if( $ValueName = "fixed" )
+						if( $Value = "true" )
+							$IsFixedDefault = true
+						endif
+					else
+						write " " & $ValueName & "=" & "\"" & $Value & "\""
+					endif
+				endif
+			next	
+	endswitch		
+next
+
+$Type = $Property.type
+$HasType = $Type.Valid
+$HasContentType = true
+$HasSimpleType = false
+
+if( $HasType )
+	foreach $Type_Stereotype in $Type.appliedStereotype
+		switch ($Type_Stereotype.name)
+			case "global": 		$HasContentType = false
+			case "simpleType": 	$HasSimpleType = true
+		endswitch
+	next
+endif
+
+if( $HasType and $HasContentType = false )
+	write " type=" & "\"" 
+	call Type( $Type )
+	write "\""
+endif	
+	
+$Default = $Property.defaultValue.value
+if( $Default <> "" )
+	if( $IsFixedDefault )
+		write " fixed=" & "\"" & $Default & "\""		
+	else
+		write " default=" & "\"" & $Default & "\""		
+	endif
+endif
+
+' end of XML attributes
+write ">\n"
+
+' content
+$IndentSave = $Indent
+$Indent = $Indent & $IndentStep
+
+call Annotation( $Property )
+
+if( $HasType and $HasContentType and $HasSimpleType )
+	call SimpleType( $Type )
+endif
+
+' end of content
+$Indent = $IndentSave
+
+write $Indent & "</" & $XML_element & ">\n"
+]

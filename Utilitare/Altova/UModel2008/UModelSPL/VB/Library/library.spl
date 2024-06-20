@@ -1,0 +1,138 @@
+[
+sub ClassifierFile( byref $Classifier )
+	include "ClassifierFile.spl"
+endsub
+
+sub ClassifierNamespace( byref $Classifier )
+	include "Classifier.spl"
+endsub
+
+sub Classifier( byref $Classifier )
+	if $Classifier.kind = "Interface"
+		call Interface( $Classifier )
+	else
+		if $Classifier.kind = "Enumeration"
+			call Enumeration( $Classifier )
+		else
+			call Class( $Classifier )
+		endif
+	endif
+endsub
+
+sub Class( byref $Class )
+	$UseDefault = true
+	foreach $Class_Stereotype in $Class.appliedStereotype
+		if $UseDefault
+			switch ($Class_Stereotype.name)
+				case "Structure": 	
+					include "Struct.spl"
+					$UseDefault = false
+				case "Delegate": 	
+					include "Delegate.spl"		
+					$UseDefault = false
+			endswitch
+		endif	
+	next
+	
+	if $UseDefault 	: include "Class.spl"	: endif
+endsub
+
+sub Interface( byref $Interface )
+	include "Interface.spl"
+endsub
+
+sub Enumeration( byref $Enumeration )
+	include "Enumeration.spl"
+endsub
+
+sub ClassifierBaseList( byref $Classifier )
+	include "ClassifierBaseList.spl"
+endsub
+
+sub EnumerationLiteralList( byref $Enumeration )
+	include "EnumerationLiteralList.spl"
+endsub
+
+sub EnumerationLiteral( byref $EnumerationLiteral )
+	include "EnumerationLiteral.spl"
+endsub
+
+sub Attribute( byref $Property )
+	$UseDefault = true
+	foreach $Attribute_Stereotype in $Property.appliedStereotype
+		if $UseDefault
+			switch ($Attribute_Stereotype.name)
+				case "Const": 	
+					include "Constant.spl"
+					$UseDefault = false
+			endswitch
+		endif	
+	next
+	
+	if $UseDefault 	: include "Attribute.spl"	: endif
+endsub
+
+sub Operation( byref $Operation )
+	$UseDefault = true
+	foreach $Operation_Stereotype in $Operation.appliedStereotype
+		if $UseDefault
+			switch ($Operation_Stereotype.name)
+				case "External":
+					include "External.spl"
+					$UseDefault = false
+				case "Event":
+					include "Event.spl"
+					$UseDefault = false
+				case "Property":
+					include "Property.spl"
+					$UseDefault = false
+				case "Operator":
+					include "Operator.spl"
+					$UseDefault = false
+			endswitch
+		endif	
+	next
+	
+	if $UseDefault 	: include "Operation.spl"	: endif
+endsub
+
+sub ParameterList( byref $Operation )
+	include "ParameterList.spl"
+endsub
+
+sub Parameter( byref $Parameter )
+	include "Parameter.spl"
+endsub
+
+sub ReturnParameter( byref $Parameter )
+	include "ReturnParameter.spl"
+endsub
+
+sub Type( byref $Type )
+	include "Type.spl"
+endsub
+
+sub TemplateSignature( byref $TemplateSignature )
+	include "TemplateSignature.spl"
+endsub
+
+sub TemplateParameter( byref $TemplateParameter )
+	include "TemplateParameter.spl"
+endsub
+
+sub DocComment( byref $Element )
+	include "DocComment.spl"
+endsub
+
+sub Accessor( byref $Stereotype )
+	include "Accessor.spl"
+endsub
+
+sub AttributeSections( byref $Stereotype )
+	include "AttributeSections.spl"
+endsub
+
+sub TemplateParameterConstraints( byref $TemplateParameter )
+	include "TemplateParameterConstraints.spl"
+endsub
+]

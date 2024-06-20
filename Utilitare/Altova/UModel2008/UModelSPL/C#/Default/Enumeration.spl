@@ -1,0 +1,68 @@
+[
+write "\n"
+write $Indent
+
+'DocComment
+call DocComment( $Enumeration )
+
+$Modifiers = ""
+$BaseType = ""
+
+foreach $Stereotype in $Enumeration.appliedStereotype
+	switch( $Stereotype.name )
+		case "internal":
+			if $Enumeration.isProtected
+				$Modifiers = "internal " & $Modifiers
+			endif
+
+		case "unsafe": 	$Modifiers = $Modifiers & "unsafe "
+		case "new": 	$Modifiers = $Modifiers & "new "
+
+		case "BaseType":	
+			foreach $TaggedValue in $Stereotype.taggedValue
+				if $TaggedValue.name = "type"
+					$BaseType = $TaggedValue.value
+				endif
+			next
+		case "attributes": call AttributeSections( $Stereotype )
+	endswitch		
+next
+
+'Modifier
+if $Enumeration.isPackage	: write "internal "		: endif
+if $Enumeration.isPublic		: write "public " 		: endif
+if $Enumeration.isProtected	: write "protected "	: endif
+if $Enumeration.isPrivate	: write "private " 		: endif
+
+write $Modifiers
+
+if $Enumeration.isAbstract	: write "abstract " 	: endif
+if $Enumeration.isLeaf		: write "sealed " 		: endif
+
+write "enum "
+
+'Name
+write $Enumeration.parseableName
+
+'Template signature
+if $Enumeration.isTemplate
+	call TemplateSignature( $Class.ownedTemplateSignature )
+endif
+
+'Base
+if $BaseType <> "" : write " : " & $BaseType : endif
+
+write "\n"
+write $Indent & "{"
+
+$IndentSave = $Indent
+$Indent = $Indent & $IndentStep
+
+'Enumeration literals
+call EnumerationLiteralList( $Enumeration )
+
+$Indent = $IndentSave
+
+write "\n"
+write $Indent & "}"
+]

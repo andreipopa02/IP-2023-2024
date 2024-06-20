@@ -1,0 +1,1 @@
+Java Lang (types only) contains classes, interfaces and packages from the java.lang package of JDK 1.4.2_13 without attributes and operations.

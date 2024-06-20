@@ -1,0 +1,1756 @@
+<?xml version="1.0" encoding="iso-8859-1"?><SUF70UninstallData>
+<DataFilePath>c:\Program Files\Altova\UModel2008\\Uninstall\uninstall.dat</DataFilePath>
+<CPRegKey>SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\UModel2008Academic Enterprise Edition</CPRegKey>
+<EXELocation>c:\Program Files\Altova\UModel2008\\uninstall.exe</EXELocation>
+<AppShortcutFolderPath>C:\Users\qwert\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Altova\UModel2008</AppShortcutFolderPath>
+<UninstallReverseOrder>1</UninstallReverseOrder>
+<UninstallFiles>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\de\CSharpRef20.resources.dll</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc></FontDesc>
+<BackupFile></BackupFile>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelImageLibrary\DB.bmp</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc></FontDesc>
+<BackupFile></BackupFile>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelImageLibrary\FileDTD.bmp</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc></FontDesc>
+<BackupFile></BackupFile>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelImageLibrary\FileFlat.bmp</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc></FontDesc>
+<BackupFile></BackupFile>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelImageLibrary\FileHTML.bmp</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc></FontDesc>
+<BackupFile></BackupFile>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelImageLibrary\FilePDF.bmp</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc></FontDesc>
+<BackupFile></BackupFile>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelImageLibrary\FileSQL.bmp</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc></FontDesc>
+<BackupFile></BackupFile>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelImageLibrary\FileTXT.bmp</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc></FontDesc>
+<BackupFile></BackupFile>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelImageLibrary\FileWSDL.bmp</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc></FontDesc>
+<BackupFile></BackupFile>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelImageLibrary\FileXML.bmp</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc></FontDesc>
+<BackupFile></BackupFile>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelImageLibrary\FileXSD.bmp</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc></FontDesc>
+<BackupFile></BackupFile>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelImageLibrary\FileXSL.bmp</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc></FontDesc>
+<BackupFile></BackupFile>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelImageLibrary\FileXSLT.bmp</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc></FontDesc>
+<BackupFile></BackupFile>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelImageLibrary\Folder.bmp</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc></FontDesc>
+<BackupFile></BackupFile>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelImageLibrary\FolderEmpty.bmp</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc></FontDesc>
+<BackupFile></BackupFile>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelImageLibrary\Globe.bmp</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc></FontDesc>
+<BackupFile></BackupFile>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelImageLibrary\GlobeEDI.bmp</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc></FontDesc>
+<BackupFile></BackupFile>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelImageLibrary\GlobeWWW.bmp</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc></FontDesc>
+<BackupFile></BackupFile>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelImageLibrary\NumPad.bmp</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc></FontDesc>
+<BackupFile></BackupFile>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelImageLibrary\PC.bmp</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc></FontDesc>
+<BackupFile></BackupFile>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelImageLibrary\Printer.bmp</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc></FontDesc>
+<BackupFile></BackupFile>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelImageLibrary\Projector.bmp</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc></FontDesc>
+<BackupFile></BackupFile>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelImageLibrary\Schema.bmp</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc></FontDesc>
+<BackupFile></BackupFile>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelImageLibrary\Soap.bmp</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc></FontDesc>
+<BackupFile></BackupFile>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelImageLibrary\User.bmp</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc></FontDesc>
+<BackupFile></BackupFile>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelImageLibrary\UserAuthentic.bmp</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc></FontDesc>
+<BackupFile></BackupFile>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelImageLibrary\UserBusiness.bmp</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc></FontDesc>
+<BackupFile></BackupFile>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelImageLibrary\UserCustomer.bmp</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc></FontDesc>
+<BackupFile></BackupFile>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelImageLibrary\UserPC.bmp</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc></FontDesc>
+<BackupFile></BackupFile>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelInclude\BPMN Profile.ump</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc></FontDesc>
+<BackupFile></BackupFile>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelInclude\C# Profile.txt</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc></FontDesc>
+<BackupFile></BackupFile>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelInclude\C# Profile.ump</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc></FontDesc>
+<BackupFile></BackupFile>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelInclude\Java Profile.txt</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc></FontDesc>
+<BackupFile></BackupFile>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelInclude\Java Profile.ump</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc></FontDesc>
+<BackupFile></BackupFile>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelInclude\UML Standard Profile.txt</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc></FontDesc>
+<BackupFile></BackupFile>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelInclude\UML Standard Profile.ump</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc></FontDesc>
+<BackupFile></BackupFile>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelInclude\VB Profile.txt</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc></FontDesc>
+<BackupFile></BackupFile>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelInclude\VB Profile.ump</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc></FontDesc>
+<BackupFile></BackupFile>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelInclude\XSD Profile.txt</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc></FontDesc>
+<BackupFile></BackupFile>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelInclude\XSD Profile.ump</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc></FontDesc>
+<BackupFile></BackupFile>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelInclude\C#2.0\Microsoft.NET (types only).txt</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelInclude\C#2.0\Microsoft.NET (types only).ump</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelInclude\C#3.0\Microsoft.NET3.5 for C#3.0 (types only).txt</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelInclude\C#3.0\Microsoft.NET3.5 for C#3.0 (types only).ump</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelInclude\Java1.4\Java Lang (types only).txt</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelInclude\Java1.4\Java Lang (types only).ump</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelInclude\Java1.4\Java Lang.txt</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelInclude\Java1.4\Java Lang.ump</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelInclude\Java5.0\Java (types only).txt</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelInclude\Java5.0\Java (types only).ump</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelInclude\Java5.0\Java.txt</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelInclude\Java5.0\Java.ump</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelInclude\Java6.0\Java JDK 6 (types only).txt</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelInclude\Java6.0\Java JDK 6 (types only).ump</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelInclude\VB8.0\Microsoft.NET for VB8.0 (types only).txt</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelInclude\VB8.0\Microsoft.NET for VB8.0 (types only).ump</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelInclude\VB9.0\Microsoft.NET3.5 for VB9.0 (types only).txt</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelInclude\VB9.0\Microsoft.NET3.5 for VB9.0 (types only).ump</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\C#\Default\Accessor.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\C#\Default\Attribute.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\C#\Default\AttributeSections.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\C#\Default\Class.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\C#\Default\Classifier.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\C#\Default\ClassifierBaseList.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\C#\Default\ClassifierFile.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\C#\Default\Constant.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\C#\Default\ConstraintClauses.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\C#\Default\Delegate.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\C#\Default\DocComment.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\C#\Default\Enumeration.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\C#\Default\EnumerationLiteral.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\C#\Default\EnumerationLiteralList.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\C#\Default\Event.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\C#\Default\FixedSizeBuffer.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\C#\Default\Indexer.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\C#\Default\Interface.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\C#\Default\Operation.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\C#\Default\Operator.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\C#\Default\Parameter.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\C#\Default\ParameterList.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\C#\Default\Property.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\C#\Default\ReturnParameter.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\C#\Default\Struct.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\C#\Default\TemplateParameter.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\C#\Default\TemplateParameterConstraints.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\C#\Default\TemplateSignature.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\C#\Default\Type.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\C#\Library\library.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\GetterSetter\C#\Default\Default.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\GetterSetter\Default\Default.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\GetterSetter\Java\Default\Default.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\GetterSetter\VB\Default\Default.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\Java\Default\Annotations.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\Java\Default\Attribute.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\Java\Default\Class.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\Java\Default\ClassBaseList.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\Java\Default\ClassFile.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\Java\Default\ClassInterfaceList.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\Java\Default\DocComment.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\Java\Default\EnumerationLiteral.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\Java\Default\EnumerationLiteralList.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\Java\Default\Operation.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\Java\Default\OperationExceptionList.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\Java\Default\Parameter.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\Java\Default\ParameterList.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\Java\Default\TemplateParameter.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\Java\Default\TemplateParameterBounds.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\Java\Default\TemplateSignature.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\Java\Default\Type.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\Java\Library\library.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\VB\Default\Accessor.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\VB\Default\Attribute.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\VB\Default\AttributeSections.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\VB\Default\Class.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\VB\Default\Classifier.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\VB\Default\ClassifierBaseList.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\VB\Default\ClassifierFile.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\VB\Default\Constant.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\VB\Default\Delegate.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\VB\Default\DocComment.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\VB\Default\Enumeration.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\VB\Default\EnumerationLiteral.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\VB\Default\EnumerationLiteralList.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\VB\Default\Event.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\VB\Default\External.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\VB\Default\Interface.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\VB\Default\Operation.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\VB\Default\Operator.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\VB\Default\Parameter.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\VB\Default\ParameterList.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\VB\Default\Property.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\VB\Default\ReturnParameter.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\VB\Default\Struct.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\VB\Default\TemplateParameter.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\VB\Default\TemplateParameterConstraints.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\VB\Default\TemplateSignature.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\VB\Default\Type.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\VB\Library\library.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\XSD\Default\All.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\XSD\Default\Annotation.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\XSD\Default\Any.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\XSD\Default\AnyAttribute.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\XSD\Default\Appinfo.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\XSD\Default\Attribute.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\XSD\Default\AttributeGroup_Global.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\XSD\Default\AttributeGroup_Ref.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\XSD\Default\Attribute_Global.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\XSD\Default\Attribute_Ref.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\XSD\Default\Choice.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\XSD\Default\ComplexType.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\XSD\Default\ComplexType_Extension.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\XSD\Default\ComplexType_Restriction.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\XSD\Default\ComplexType_SimpleContent.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\XSD\Default\Documentation.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\XSD\Default\Element.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\XSD\Default\Element_Global.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\XSD\Default\Element_Ref.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\XSD\Default\Group_Global.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\XSD\Default\Group_Ref.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\XSD\Default\Import.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\XSD\Default\Include.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\XSD\Default\List.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\XSD\Default\Notation.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\XSD\Default\Redefine.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\XSD\Default\Reference.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\XSD\Default\Schema.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\XSD\Default\Sequence.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\XSD\Default\SimpleContent_Restriction.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\XSD\Default\SimpleType.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\XSD\Default\SimpleType_Extension.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\XSD\Default\SimpleType_Restriction.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\XSD\Default\Type.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\XSD\Default\Union.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\\UModelSPL\XSD\Library\library.spl</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\Codegenerator.chm</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\CSharpRef20.exe</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\JavaRef14.jar</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\JavaRef15.jar</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\Umodel.chm</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\UModel.exe</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\UModel.inst</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\UModel.tlb</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\UModelBatch.exe</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\UserCommandImages.bmp</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+<File>
+<Filename>c:\Program Files\Altova\UModel2008\VBasicRef80.exe</Filename>
+<DecrementUsageCount>0</DecrementUsageCount>
+<UnregisterCOM>0</UnregisterCOM>
+<UnregisterFont>0</UnregisterFont>
+<FontDesc/>
+<BackupFile/>
+</File>
+</UninstallFiles>
+<UninstallShortcuts>
+<Filename>C:\Users\qwert\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Altova\UModel2008\Codegenerator.lnk</Filename>
+<Filename>C:\Users\qwert\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Altova\UModel2008\Umodel.lnk</Filename>
+<Filename>C:\Users\qwert\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Altova\UModel2008\UModel2008.lnk</Filename>
+<Filename>C:\Users\qwert\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Altova\UModel2008\Uninstall UModel2008.lnk</Filename>
+</UninstallShortcuts>
+<UninstallSupportFiles>
+<Filename>c:\Program Files\Altova\UModel2008\\Uninstall\IRIMG1.JPG</Filename>
+<Filename>c:\Program Files\Altova\UModel2008\\Uninstall\IRIMG2.JPG</Filename>
+</UninstallSupportFiles>
+<UninstallFolders>
+<FolderPath>c:\Program Files\Altova\UModel2008\\de</FolderPath>
+<FolderPath>c:\Program Files\Altova\UModel2008\\UModelImageLibrary</FolderPath>
+<FolderPath>c:\Program Files\Altova\UModel2008\\UModelInclude</FolderPath>
+<FolderPath>c:\Program Files\Altova\UModel2008\\UModelInclude\C#2.0</FolderPath>
+<FolderPath>c:\Program Files\Altova\UModel2008\\UModelInclude\C#3.0</FolderPath>
+<FolderPath>c:\Program Files\Altova\UModel2008\\UModelInclude\Java1.4</FolderPath>
+<FolderPath>c:\Program Files\Altova\UModel2008\\UModelInclude\Java5.0</FolderPath>
+<FolderPath>c:\Program Files\Altova\UModel2008\\UModelInclude\Java6.0</FolderPath>
+<FolderPath>c:\Program Files\Altova\UModel2008\\UModelInclude\VB8.0</FolderPath>
+<FolderPath>c:\Program Files\Altova\UModel2008\\UModelInclude\VB9.0</FolderPath>
+<FolderPath>c:\Program Files\Altova\UModel2008\\UModelSPL</FolderPath>
+<FolderPath>c:\Program Files\Altova\UModel2008\\UModelSPL\C#</FolderPath>
+<FolderPath>c:\Program Files\Altova\UModel2008\\UModelSPL\C#\Default</FolderPath>
+<FolderPath>c:\Program Files\Altova\UModel2008\\UModelSPL\C#\Library</FolderPath>
+<FolderPath>c:\Program Files\Altova\UModel2008\\UModelSPL\GetterSetter</FolderPath>
+<FolderPath>c:\Program Files\Altova\UModel2008\\UModelSPL\GetterSetter\C#</FolderPath>
+<FolderPath>c:\Program Files\Altova\UModel2008\\UModelSPL\GetterSetter\C#\Default</FolderPath>
+<FolderPath>c:\Program Files\Altova\UModel2008\\UModelSPL\GetterSetter\Default</FolderPath>
+<FolderPath>c:\Program Files\Altova\UModel2008\\UModelSPL\GetterSetter\Java</FolderPath>
+<FolderPath>c:\Program Files\Altova\UModel2008\\UModelSPL\GetterSetter\Java\Default</FolderPath>
+<FolderPath>c:\Program Files\Altova\UModel2008\\UModelSPL\GetterSetter\VB</FolderPath>
+<FolderPath>c:\Program Files\Altova\UModel2008\\UModelSPL\GetterSetter\VB\Default</FolderPath>
+<FolderPath>c:\Program Files\Altova\UModel2008\\UModelSPL\Java</FolderPath>
+<FolderPath>c:\Program Files\Altova\UModel2008\\UModelSPL\Java\Default</FolderPath>
+<FolderPath>c:\Program Files\Altova\UModel2008\\UModelSPL\Java\Library</FolderPath>
+<FolderPath>c:\Program Files\Altova\UModel2008\\UModelSPL\VB</FolderPath>
+<FolderPath>c:\Program Files\Altova\UModel2008\\UModelSPL\VB\Default</FolderPath>
+<FolderPath>c:\Program Files\Altova\UModel2008\\UModelSPL\VB\Library</FolderPath>
+<FolderPath>c:\Program Files\Altova\UModel2008\\UModelSPL\XSD</FolderPath>
+<FolderPath>c:\Program Files\Altova\UModel2008\\UModelSPL\XSD\Default</FolderPath>
+<FolderPath>c:\Program Files\Altova\UModel2008\\UModelSPL\XSD\Library</FolderPath>
+<FolderPath>C:\Users\qwert\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Altova</FolderPath>
+<FolderPath>C:\Users\qwert\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Altova\UModel2008</FolderPath>
+</UninstallFolders>
+<SessionVars>
+<Var>
+<Name>%ProductName%</Name>
+<Value>UModel2008</Value>
+</Var>
+<Var>
+<Name>%CompanyName%</Name>
+<Value>Altova</Value>
+</Var>
+<Var>
+<Name>%ProductVer%</Name>
+<Value>Academic Enterprise Edition</Value>
+</Var>
+<Var>
+<Name>%Copyright%</Name>
+<Value>Copyright © 2008 %CompanyName%</Value>
+</Var>
+<Var>
+<Name>%CompanyURL%</Name>
+<Value>http://www.altova.com</Value>
+</Var>
+<Var>
+<Name>%WindowTitle%</Name>
+<Value>%ProductName% Setup</Value>
+</Var>
+<Var>
+<Name>%WindowTitleUninstall%</Name>
+<Value>%ProductName% Uninstaller</Value>
+</Var>
+<Var>
+<Name>%AppFolder%</Name>
+<Value>c:\Program Files\Altova\UModel2008\</Value>
+</Var>
+<Var>
+<Name>%AppShortcutFolderName%</Name>
+<Value>Altova\UModel2008</Value>
+</Var>
+<Var>
+<Name>%ApplicationDataFolder%</Name>
+<Value>C:\Users\qwert\AppData\Roaming</Value>
+</Var>
+<Var>
+<Name>%ApplicationDataFolderCommon%</Name>
+<Value>C:\ProgramData</Value>
+</Var>
+<Var>
+<Name>%DesktopFolder%</Name>
+<Value>C:\Users\qwert\OneDrive\Desktop</Value>
+</Var>
+<Var>
+<Name>%DesktopFolderCommon%</Name>
+<Value>C:\Users\Public\Desktop</Value>
+</Var>
+<Var>
+<Name>%FontsFolder%</Name>
+<Value>C:\Windows\Fonts</Value>
+</Var>
+<Var>
+<Name>%MyDocumentsFolder%</Name>
+<Value>C:\Users\qwert\OneDrive\Documente</Value>
+</Var>
+<Var>
+<Name>%StartFolder%</Name>
+<Value>C:\Users\qwert\AppData\Roaming\Microsoft\Windows\Start Menu</Value>
+</Var>
+<Var>
+<Name>%StartFolderCommon%</Name>
+<Value>C:\ProgramData\Microsoft\Windows\Start Menu</Value>
+</Var>
+<Var>
+<Name>%StartProgramsFolder%</Name>
+<Value>C:\Users\qwert\AppData\Roaming\Microsoft\Windows\Start Menu\Programs</Value>
+</Var>
+<Var>
+<Name>%StartProgramsFolderCommon%</Name>
+<Value>C:\ProgramData\Microsoft\Windows\Start Menu\Programs</Value>
+</Var>
+<Var>
+<Name>%StartupFolder%</Name>
+<Value>C:\Users\qwert\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup</Value>
+</Var>
+<Var>
+<Name>%StartupFolderCommon%</Name>
+<Value>C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp</Value>
+</Var>
+<Var>
+<Name>%CommonDocumentsFolder%</Name>
+<Value>C:\Users\Public\Documents</Value>
+</Var>
+<Var>
+<Name>%MyMusicFolder%</Name>
+<Value>C:\Users\qwert\Music</Value>
+</Var>
+<Var>
+<Name>%MyMusicFolderCommon%</Name>
+<Value>C:\Users\Public\Music</Value>
+</Var>
+<Var>
+<Name>%MyPicturesFolder%</Name>
+<Value>C:\Users\qwert\OneDrive\Imagini</Value>
+</Var>
+<Var>
+<Name>%MyPicturesFolderCommon%</Name>
+<Value>C:\Users\Public\Pictures</Value>
+</Var>
+<Var>
+<Name>%MyVideosFolder%</Name>
+<Value>C:\Users\qwert\Videos</Value>
+</Var>
+<Var>
+<Name>%MyVideosFolderCommon%</Name>
+<Value>C:\Users\Public\Videos</Value>
+</Var>
+<Var>
+<Name>%ProgramFilesFolder64%</Name>
+<Value>C:\Program Files</Value>
+</Var>
+<Var>
+<Name>%CommonFilesFolder64%</Name>
+<Value>C:\Program Files\Common Files</Value>
+</Var>
+<Var>
+<Name>%ProgramFilesFolder%</Name>
+<Value>C:\Program Files (x86)</Value>
+</Var>
+<Var>
+<Name>%CommonFilesFolder%</Name>
+<Value>C:\Program Files (x86)\Common Files</Value>
+</Var>
+<Var>
+<Name>%SystemFolder%</Name>
+<Value>C:\WINDOWS\system32</Value>
+</Var>
+<Var>
+<Name>%WindowsFolder%</Name>
+<Value>C:\WINDOWS</Value>
+</Var>
+<Var>
+<Name>%SystemDrive%</Name>
+<Value>C:</Value>
+</Var>
+<Var>
+<Name>%TempFolder%</Name>
+<Value>C:\Users\qwert\AppData\Local\Temp</Value>
+</Var>
+<Var>
+<Name>%TempLaunchFolder%</Name>
+<Value>C:\Users\qwert\AppData\Local\Temp\_ir_sf_temp_0</Value>
+</Var>
+<Var>
+<Name>%RegOwner%</Name>
+<Value>qwertypopa9999@gmail.com</Value>
+</Var>
+<Var>
+<Name>%RegOrganization%</Name>
+<Value></Value>
+</Var>
+<Var>
+<Name>%AppDrive%</Name>
+<Value>c:</Value>
+</Var>
+<Var>
+<Name>%DAOPath%</Name>
+<Value>C:\Program Files (x86)\Common Files\Microsoft Shared\DAO</Value>
+</Var>
+<Var>
+<Name>%LaunchUserName%</Name>
+<Value>qwert</Value>
+</Var>
+<Var>
+<Name>%LaunchUserDomain%</Name>
+<Value>DESKTOP-TO72V87</Value>
+</Var>
+<Var>
+<Name>%LaunchUserApplicationDataFolder%</Name>
+<Value>C:\Users\qwert\AppData\Roaming</Value>
+</Var>
+<Var>
+<Name>%LaunchUserDesktopFolder%</Name>
+<Value>C:\Users\qwert\OneDrive\Desktop</Value>
+</Var>
+<Var>
+<Name>%LaunchUserMyDocumentsFolder%</Name>
+<Value>C:\Users\qwert\OneDrive\Documente</Value>
+</Var>
+<Var>
+<Name>%LaunchUserStartProgramsFolder%</Name>
+<Value>C:\Users\qwert\AppData\Roaming\Microsoft\Windows\Start Menu\Programs</Value>
+</Var>
+<Var>
+<Name>%LaunchUserStartFolder%</Name>
+<Value>C:\Users\qwert\AppData\Roaming\Microsoft\Windows\Start Menu</Value>
+</Var>
+<Var>
+<Name>%LaunchUserStartupFolder%</Name>
+<Value>C:\Users\qwert\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup</Value>
+</Var>
+<Var>
+<Name>%LaunchUserMyMusicFolder%</Name>
+<Value>C:\Users\qwert\Music</Value>
+</Var>
+<Var>
+<Name>%LaunchUserMyPicturesFolder%</Name>
+<Value>C:\Users\qwert\OneDrive\Imagini</Value>
+</Var>
+<Var>
+<Name>%LaunchUserMyVideosFolder%</Name>
+<Value>C:\Users\qwert\Videos</Value>
+</Var>
+<Var>
+<Name>%SourceFilename%</Name>
+<Value>C:\Users\qwert\Downloads\Altova UModel.exe</Value>
+</Var>
+<Var>
+<Name>%SourceFolder%</Name>
+<Value>C:\Users\qwert\Downloads</Value>
+</Var>
+<Var>
+<Name>%SourceDrive%</Name>
+<Value>C:</Value>
+</Var>
+</SessionVars>
+</SUF70UninstallData>

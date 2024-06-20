@@ -1,0 +1,57 @@
+[
+'UML_element -> $ElementImport
+$XML_element = $NamespacePrefix & "import"
+
+$Class = $ElementImport.owner
+$Import = $ElementImport.importedElement
+
+write $Indent & "<" & $XML_element
+
+' XML attributes
+
+$IsNamespace = false
+
+foreach $Stereotype in $ElementImport.appliedStereotype
+	switch( $Stereotype.name )
+		case "import":
+			foreach $TaggedValue in $Stereotype.taggedValue
+				$ValueName = $TaggedValue.name
+				$Value = $TaggedValue.value
+				
+				if( $ValueName = "schemaLocation" )
+					if( $Value <> "" )
+						write " " & $ValueName & "=" & "\"" & $Value & "\""
+					endif								
+				else
+					if( $ValueName = "namespace" )
+						if( $Value <> "" )
+							write " " & $ValueName & "=" & "\"" & $Value & "\""
+							$IsNamespace = true
+						endif								
+					endif
+				endif
+			next	
+	endswitch		
+next	
+
+if( $IsNamespace = false )
+	$Namespace = $Import.owningNamespacePackage
+	if( $Namespace.Valid )
+		write " " & "namespace" & "=" & "\"" & $Namespace.name & "\""
+	endif
+endif
+
+' end of XML attributes
+write ">\n"
+
+' content
+$IndentSave = $Indent
+$Indent = $Indent & $IndentStep
+
+call Annotation( $ElementImport )
+
+' end of content
+$Indent = $IndentSave
+
+write $Indent & "</" & $XML_element & ">\n"
+]

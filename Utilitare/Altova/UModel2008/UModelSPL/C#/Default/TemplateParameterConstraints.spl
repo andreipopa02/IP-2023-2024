@@ -1,0 +1,38 @@
+[
+$ParameteredElement = $TemplateParameter.ownedParameteredElement
+if $ParameteredElement.Valid
+	$IsConstructorConstraint = false
+	$IsValueTypeConstraint = false
+	$IsReferenceTypeConstraint = false
+	
+	foreach $Stereotype in $TemplateParameter.appliedStereotype
+		switch( $Stereotype.name )
+			case "ConstructorConstraint":	$IsConstructorConstraint = true
+			case "ValueTypeConstraint": 		$IsValueTypeConstraint = true
+			case "ReferenceTypeConstraint": 	$IsReferenceTypeConstraint = true
+		endswitch		
+	next
+
+	$Prefix = "\n" & $Indent & $IndentStep & "where " & $ParameteredElement.parseableName & " : "
+
+	if $IsValueTypeConstraint
+		write $Prefix & "struct"
+		$Prefix = ", "
+	endif
+	
+	if $IsReferenceTypeConstraint
+		write $Prefix & "class"
+		$Prefix = ", "
+	endif
+
+	foreach $Constraint in $TemplateParameter.constrainingClassifier
+		write $Prefix
+		call Type( $Constraint )
+		$Prefix = ", "
+	next
+	
+	if $IsConstructorConstraint
+		write $Prefix & "new()"
+	endif
+endif	
+]

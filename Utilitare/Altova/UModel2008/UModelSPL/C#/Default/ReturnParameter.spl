@@ -1,0 +1,22 @@
+[
+if $Parameter.Valid	
+	$IsNullable = false
+
+	foreach $Stereotype in $Parameter.appliedStereotype
+		if $Stereotype.name = "nullable" : $IsNullable = true : endif
+	next
+	
+	'Type
+	call Type( $Parameter.type )
+
+	if $IsNullable : write "?" : endif
+
+	'Type modifier
+	write $Parameter.postTypeModifier
+
+	'Dimension
+	foreach $UpperValue in $Parameter.upperValue
+		write "[]"
+	next
+endif	
+]

@@ -1,0 +1,46 @@
+[
+'special cases
+if $Parameter.type.parseableName = "__arglist"
+	write "__arglist"
+else
+	$IsNullable = false
+
+	foreach $Stereotype in $Parameter.appliedStereotype
+		switch( $Stereotype.name )
+			case "Nullable" : $IsNullable = true
+			case "Attributes": call AttributeSections( $Stereotype )
+		endswitch		
+	next
+	
+	$DefaultValue = $Parameter.defaultValue.value
+	if $DefaultValue <> "" : write "Optional " : endif
+
+	'Modifier
+	if $Parameter.isIn			: write "ByVal "		: endif
+	if $Parameter.isOut			: write "ByRef "		: endif
+	if $Parameter.isInOut		: write "ByRef "		: endif
+	if $Parameter.isVarArgList	: write "ParamArray "	: endif
+	
+	'Name
+	write $Parameter.parseableName
+
+	write " As "
+
+	'Type
+	call Type( $Parameter.type )
+
+	'Nullable
+	if $IsNullable : write "?" : endif
+
+	'Type modifier
+	write $Parameter.postTypeModifier
+
+	'Dimension
+	foreach $UpperValue in $Parameter.upperValue
+		write "()"
+	next
+   
+	'Default value
+	if $DefaultValue <> "" : write " = " & $DefaultValue : endif
+endif	
+]

@@ -1,0 +1,20 @@
+[
+write  "\n"
+write $Indent
+
+'DocComment
+call DocComment( $EnumerationLiteral )
+
+foreach $Stereotype in $EnumerationLiteral.appliedStereotype
+	switch( $Stereotype.name )
+		case "attributes": call AttributeSections( $Stereotype )
+	endswitch		
+next
+
+'Name
+write $EnumerationLiteral.parseableName
+
+'Default value
+$DefaultValue = $EnumerationLiteral.defaultValue
+if $DefaultValue <> "" : write " = " & $DefaultValue : endif
+]

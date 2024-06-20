@@ -1,0 +1,76 @@
+[
+write  "\n"
+write $Indent
+
+'DocComment
+call DocComment( $Operation )
+
+$Name = $Operation.parseableName
+$OwnerKind = $Operation.owner.kind
+$Modifiers = ""
+$AccessModifiers = ""
+
+$ExternalMarshalling = ""
+$ExternalLib = "\"\""
+$ExternalAlias = ""
+
+foreach $Stereotype in $Operation.appliedStereotype
+	switch( $Stereotype.name )
+		case "External"
+			foreach $TaggedValue in $Stereotype.taggedValue
+				if $TaggedValue.name = "Marshalling" : $ExternalMarshalling = $TaggedValue.value : endif
+				if $TaggedValue.name = "Lib" : $ExternalLib = $TaggedValue.value.BuildQuoted : endif
+				if $TaggedValue.name = "Alias" : $ExternalAlias = $TaggedValue.value.BuildQuoted : endif
+			next
+		case "Friend":	$AccessModifiers = "Friend "
+		case "Shadows": 		$Modifiers = $Modifiers & "Shadows "
+		case "Overloads": 		$Modifiers = $Modifiers & "Overloads "
+		case "Attributes": call AttributeSections( $Stereotype )
+	endswitch		
+next
+
+'Modifier
+if $Operation.isPackage and $OwnerKind <> "Interface"	: $AccessModifiers = "Friend "							: endif
+if $Operation.isPublic and $OwnerKind <> "Interface"	: $AccessModifiers = "Public " 							: endif
+if $Operation.isProtected and $OwnerKind <> "Interface"	: $AccessModifiers = "Protected " & $AccessModifiers	: endif
+if $Operation.isPrivate and $OwnerKind <> "Interface"	: $AccessModifiers = "Private " 						: endif
+
+if $Name.HasDot = false
+	write $AccessModifiers
+endif
+
+write $Modifiers
+
+$SubOrFunc = ""
+if $Operation.ownedReturnParameter.Valid
+	$SubOrFunc = "Function "
+else
+	$SubOrFunc = "Sub "
+endif
+
+if $ExternalMarshalling <> "" and $ExternalMarshalling <> "Ansi"
+	$ExternalMarshalling = $ExternalMarshalling & " "
+else
+	$ExternalMarshalling = ""
+endif
+
+'Name
+write "Declare " & $ExternalMarshalling & $SubOrFunc & $Name
+
+$LibAndAliasClause = ""
+if $ExternalLib <> "" : $LibAndAliasClause = " Lib " & $ExternalLib : endif
+if $ExternalAlias <> "" : $LibAndAliasClause = $LibAndAliasClause & " Alias " & $ExternalAlias : endif
+
+if $LibAndAliasClause <> "" : write $LibAndAliasClause & " " : endif
+
+'Parameter
+write "("
+call ParameterList( $Operation )
+write ")"
+
+'Return Type
+if $Operation.ownedReturnParameter.Valid
+	write " "			
+	call ReturnParameter( $Operation.ownedReturnParameter )
+endif
+]

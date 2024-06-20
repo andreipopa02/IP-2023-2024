@@ -1,0 +1,75 @@
+[
+'UML_element -> $DataType
+$XML_element = $NamespacePrefix & "complexType"
+
+write $Indent & "<" & $XML_element
+
+' XML attributes
+$Name = $DataType.name
+
+$XML_attributes = ""
+$XML_attributes_content = ""
+
+foreach $Stereotype in $DataType.appliedStereotype
+	switch( $Stereotype.name )
+		case "complexType":
+			foreach $TaggedValue in $Stereotype.taggedValue
+				$ValueName = $TaggedValue.name
+				$Prefix = " " & $ValueName & "=" & "\""
+				$Postfix = ""
+				foreach $SingleValue in $TaggedValue.values
+					$Value = $SingleValue.value
+					if( $Value <> "" )
+						$XML_attributes = $XML_attributes & $Prefix & $Value					
+						$Prefix = " "
+						$Postfix =  "\""
+					endif
+				next
+				$XML_attributes = $XML_attributes & $Postfix
+			next	
+		case "simpleContent":
+			foreach $TaggedValue in $Stereotype.taggedValue
+				$ValueName = $TaggedValue.name
+				$Value = $TaggedValue.value
+				
+				if( $Value <> "" )
+					$XML_attributes_content = $XML_attributes_content & " " & $ValueName & "=" & "\"" & $Value & "\""
+				endif
+			next	
+		case "global":
+			if( $Name <> "" )
+				$XML_attributes = " name=" & "\"" & $Name & "\"" & $XML_attributes
+			endif
+	endswitch		
+next
+
+write $XML_attributes
+
+if $Class.isAbstract : write " abstract=\"true\"" 	: endif
+
+' end of XML attributes
+write ">\n"
+
+$IndentSave = $Indent
+
+$Indent = $Indent & $IndentStep
+$IndentContent = $Indent
+
+call Annotation( $DataType )
+
+$XML_element_content = $NamespacePrefix & "simpleContent"
+
+write $IndentContent & "<" & $XML_element_content & $XML_attributes_content & ">\n"
+
+' content
+$Indent = $IndentContent & $IndentStep
+
+call SimpleContent_Base( $DataType )
+
+' end of content
+write $IndentContent & "</" & $XML_element_content & ">\n"
+
+$Indent = $IndentSave
+
+write $Indent & "</" & $XML_element & ">\n"
+]

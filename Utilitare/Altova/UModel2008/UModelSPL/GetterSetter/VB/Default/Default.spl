@@ -1,0 +1,119 @@
+[
+$PropertyName 	= $Property.name
+$TypeName  	= $Property.type.displayTypeName
+
+$OperationName 	= $PropertyName.RemoveLeft( "_" )
+$OperationName 	= $OperationName.RemoveLeft( "m_" )
+
+if $OperationName = $PropertyName
+	$OperationName = $OperationName.MakeUpper( 1 )
+	$OperationName 	= $OperationName.RemoveRightNoCase( "value" )
+endif
+
+if $Options.generateGetterAndSetter
+	if $Options.generateSetter and $Options.generateGetter 
+		'documentation
+		if $Options.generateComments
+			$documentation = ""
+		endif
+		
+		'visibility
+		$visibility = "public"
+		
+		'abstract
+		$isAbstract = false
+		
+		'static
+		$isStatic = false
+	
+		'leaf
+		$isLeaf = false
+	
+		'stereotypes
+		write "<<Property, SetAccessor, GetAccessor>>"
+		write " "
+	
+		'name
+		write $OperationName
+		
+		write "("
+		write ")"
+		
+		'type
+		if $TypeName <> ""
+			write ":"
+			write $TypeName
+		endif
+	endif
+else
+	if $Options.generateSetter
+		'documentation
+		if $Options.generateComments
+			$documentation = ""
+		endif
+		
+		'visibility
+		$visibility = "public"
+		
+		'abstract
+		$isAbstract = false
+		
+		'static
+		$isStatic = false
+	
+		'leaf
+		$isLeaf = false
+	
+		'stereotypes
+		write "<<Property, SetAccessor>>"
+		write " "
+	
+		'name
+		write $OperationName
+		
+		write "("
+		write ")"
+		
+		'type
+		if $TypeName <> ""
+			write ":"
+			write $TypeName
+		endif
+	endif
+	
+	if $Options.generateGetter
+		'documentation
+		if $Options.generateComments
+			$documentation = ""
+		endif
+	
+		'visibility
+		$visibility = "public"
+		
+		'abstract
+		$isAbstract = false
+		
+		'static
+		$isStatic = false
+		
+		'leaf
+		$isLeaf = false
+		
+		'stereotypes
+		write "<<Property, GetAccessor>>"
+		write " "
+	
+		'name
+		write $OperationName
+		
+		write "("
+		write ")"
+		
+		'type
+		if $TypeName <> ""
+			write ":"
+			write $TypeName
+		endif
+	endif
+endif	
+]

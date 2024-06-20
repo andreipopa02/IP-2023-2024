@@ -1,0 +1,13 @@
+[
+foreach $TaggedValue in $Stereotype.taggedValue
+	if $TaggedValue.name = "modifiers"
+		foreach $SingleValue in $TaggedValue.values
+			$Modifiers = $SingleValue.value
+			if $Modifiers <> ""
+				write "@" & $Modifiers
+				write " "
+			endif
+		next
+	endif
+next
+]

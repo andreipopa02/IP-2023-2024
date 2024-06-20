@@ -1,0 +1,59 @@
+[
+write  "\n"
+write $Indent
+
+'DocComment
+call DocComment( $Property )
+
+$IsNullable = false
+$Modifiers = ""
+
+foreach $Stereotype in $Property.appliedStereotype
+	switch( $Stereotype.name )
+		case "Friend":
+			if $Property.isProtected
+				$Modifiers = "Friend " & $Modifiers
+			endif
+		case "Shadows": 	$Modifiers = $Modifiers & "Shadows "
+
+		case "Nullable": 	$IsNullable = true
+		case "Attributes": call AttributeSections( $Stereotype )
+	endswitch		
+next
+
+'Modifier
+if $Property.isPackage		: write "Friend "		: endif
+if $Property.isPublic		: write "Public " 		: endif
+if $Property.isProtected 	: write "Protected "	: endif
+if $Property.isPrivate		: write "Private " 		: endif
+
+write $Modifiers
+
+if $Property.isStatic 		: write "Shared " 		: endif
+if $Property.isReadOnly		: write "ReadOnly "	: endif
+
+write "Const " 
+
+'Name
+write $Property.parseableName
+
+write " as "
+
+'Type
+call Type( $Property.type )
+
+'Nullable
+if $IsNullable			: write "?"			: endif
+
+'Type modifier
+write $Property.postTypeModifier
+
+'Dimension
+foreach $UpperValue in $Property.upperValue
+	write "()"
+next
+
+'Default value
+$DefaultValue = $Property.defaultValue.value
+if $DefaultValue <> "" : write " = " & $DefaultValue : endif
+]

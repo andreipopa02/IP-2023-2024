@@ -1,0 +1,50 @@
+[
+write  "\n"
+write $Indent
+
+'DocComment
+call DocComment( $Operation )
+
+$OwnerKind = $Operation.owner.kind
+$Name = $Operation.name
+$Name = $Name.MakeLower()
+$Modifiers = ""
+$AccessModifiers = ""
+
+foreach $Stereotype in $Operation.appliedStereotype
+	switch( $Stereotype.name )
+		case "Shadows": 	$Modifiers = $Modifiers & "Shadows "
+		case "Overloads": 	$Modifiers = $Modifiers & "Overloads "
+		case "Attributes": call AttributeSections( $Stereotype )
+	endswitch
+next
+
+'Modifier
+if $Operation.isPublic		: $AccessModifiers = "Public " 	: endif
+
+write $AccessModifiers
+write $Modifiers
+
+if $Operation.isStatic 		: write "Shared " 				: endif
+
+if $Name = "widening" or $Name = "narrowing"
+	write $Operation.name
+	write " Operator CType"
+endif
+
+if $Name <> "widening" and $Name <> "narrowing"
+	write "Operator "
+	write $Operation.name
+endif
+
+'Parameter
+write "("
+call ParameterList( $Operation )
+write ") "
+
+'Return Type
+call ReturnParameter( $Operation.ownedReturnParameter )
+
+write "\n"
+write $Indent & "End Operator"
+]

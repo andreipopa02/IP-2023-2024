@@ -1,0 +1,8 @@
+[
+$Prefix = ""
+foreach $EnumerationLiteral in $Class.ownedLiteral
+	write $Prefix
+	call EnumerationLiteral( $EnumerationLiteral )
+	$Prefix = ","
+next
+]

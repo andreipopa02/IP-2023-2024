@@ -1,0 +1,83 @@
+[
+write "\n"
+write $Indent
+
+'DocComment
+call DocComment( $Interface )
+
+$Modifiers = ""
+$Partial = ""
+
+foreach $Stereotype in $Interface.appliedStereotype
+	switch( $Stereotype.name )
+		case "internal":
+			if $Interface.isProtected
+				$Modifiers = "internal " & $Modifiers
+			endif
+
+		case "unsafe": 	$Modifiers = $Modifiers & "unsafe "
+		case "new": 	$Modifiers = $Modifiers & "new "
+
+		case "partial": 	$Partial = "partial "
+
+		case "attributes": call AttributeSections( $Stereotype )
+	endswitch		
+next
+
+'Modifier
+if $Interface.isPackage		: write "internal "		: endif
+if $Interface.isPublic		: write "public " 		: endif
+if $Interface.isProtected	: write "protected "	: endif
+if $Interface.isPrivate		: write "private " 		: endif
+
+write $Modifiers
+
+if $Interface.isAbstract		: write "abstract " 	: endif
+if $Interface.isLeaf		: write "sealed " 		: endif
+
+write $Partial
+
+write "interface "
+
+'Name
+write $Interface.parseableName
+
+'Template signature
+if $Interface.isTemplate
+	call TemplateSignature( $Interface.ownedTemplateSignature )
+endif
+
+'Base
+call ClassifierBaseList( $Interface )
+
+'Constraint clause
+call ConstraintClauses( $Interface )
+
+write "\n"
+write $Indent & "{"
+
+$IndentSave = $Indent
+$Indent = $Indent & $IndentStep
+
+'Nested classifier
+foreach $InnerClass in $Interface.nestedClassifier
+	if $InnerClass.kind = "Class" or $InnerClass.kind = "Interface" or $InnerClass.kind = "Enumeration"
+		call Classifier( $InnerClass )
+	endif
+next
+
+'Attributs
+foreach $Property in $Interface.ownedAttribute
+	call Attribute( $Property )
+next
+
+'Operations
+foreach $Operation in $Interface.ownedOperation
+	call Operation( $Operation )
+next
+
+$Indent = $IndentSave
+
+write "\n"
+write $Indent & "}"
+]

@@ -1,0 +1,12 @@
+[
+'Implements
+$Kind = $Class.kind
+if $Kind = "Class" or $Kind = "AssociationClass" or $Kind = "Enumeration"
+	$Prefix = " implements"
+	foreach $InterfaceRealization in $Class.interfaceRealization
+		write $Prefix & " " 
+		call Type( $InterfaceRealization.contract )
+		$Prefix = ","
+	next
+endif
+]

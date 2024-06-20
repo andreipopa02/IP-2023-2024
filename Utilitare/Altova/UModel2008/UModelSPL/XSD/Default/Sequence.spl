@@ -1,0 +1,77 @@
+[
+'UML_element -> $Class, $Property
+$XML_element = $NamespacePrefix & "sequence"
+
+write $Indent & "<" & $XML_element
+
+' XML attributes
+
+$XML_attributes = ""
+
+foreach $Lower in $Property.lowerValue
+	$LowerValue = $Lower.value
+	if( $LowerValue <> "" )
+		$XML_attributes = " minOccurs=" & "\"" & $LowerValue & "\"" & $XML_attributes
+	endif
+next
+foreach $Upper in $Property.upperValue
+	$UpperValue = $Upper.value
+	if( $UpperValue <> "" )
+		if( $UpperValue = "*")
+			$XML_attributes = " maxOccurs=" & "\"" & "unbounded" & "\"" & $XML_attributes
+		else
+			$XML_attributes = " maxOccurs=" & "\"" & $UpperValue & "\"" & $XML_attributes
+		endif
+	endif
+next
+
+foreach $Stereotype in $Class.appliedStereotype
+	switch( $Stereotype.name )
+		case "sequence":
+			foreach $TaggedValue in $Stereotype.taggedValue
+				$ValueName = $TaggedValue.name
+				$Value = $TaggedValue.value
+				
+				if( $Value <> "" )
+					$XML_attributes = $XML_attributes & " " & $ValueName & "=" & "\"" & $Value & "\""
+				endif
+			next	
+	endswitch		
+next
+
+write $XML_attributes
+
+' end of XML attributes
+write ">\n"
+
+' content
+$IndentSave = $Indent
+$Indent = $Indent & $IndentStep
+
+call Annotation( $Class )
+
+foreach $Content_Property in $Class.ownedAttribute
+	foreach $Content_Property_Stereotype in $Content_Property.appliedStereotype
+		switch ($Content_Property_Stereotype.name)
+			case "element":	call Element( $Content_Property )
+			case "group":	call Group( $Content_Property )
+			case "any":		call Any( $Content_Property )
+		endswitch
+	next
+
+	$Content_Type = $Content_Property.type
+	if( $Content_Type.Valid)
+		foreach $Content_Type_Stereotype in $Content_Type.appliedStereotype
+			switch ($Content_Type_Stereotype.name)
+				case "sequence":	call Sequence( $Content_Type, $Content_Property )
+				case "choice":	call Choice( $Content_Type, $Content_Property )
+			endswitch
+		next
+	endif
+next
+
+' end of content
+$Indent = $IndentSave
+
+write $Indent & "</" & $XML_element & ">\n"
+]

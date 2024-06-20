@@ -1,0 +1,61 @@
+[
+$Modifiers = ""
+$Abstract = false
+
+if $Stereotype.owner.owner.kind = "Interface" or  $Stereotype.owner.isAbstract
+	$Abstract = true
+endif
+
+foreach $OwnerStereotype in $Stereotype.owner.appliedStereotype
+	switch( $OwnerStereotype.name )
+		case "extern": $Abstract = true
+	endswitch		
+next
+
+foreach $TaggedValue in $Stereotype.taggedValue
+	if $TaggedValue.name = "visibility"
+		switch( $TaggedValue.value )
+			case "internal":
+				$Modifiers = "internal "
+			case "protected":
+				$Modifiers = "protected "
+			case "private":
+				$Modifiers = "private "
+			case "protected internal":
+				$Modifiers = "protected internal "
+			case "internal protected":
+				$Modifiers = "internal protected "
+		endswitch
+	endif
+next
+
+switch ($Stereotype.name)
+	case "GetAccessor":
+		write  "\n"
+		write $Indent
+		if not $Abstract : write $Modifiers : endif
+		write "get"
+		if $Abstract
+			write ";"
+		else
+			write "{}"
+		endif
+	case "SetAccessor":
+		write  "\n"
+		write $Indent
+		if not $Abstract : write $Modifiers : endif
+		write "set"
+		if $Abstract
+			write ";"
+		else
+			write "{}"
+		endif
+	case "AddRemoveAccessor":
+		write  "\n"
+		write $Indent
+		write "add{}"
+		write  "\n"
+		write $Indent
+		write "remove{}"
+endswitch
+]
